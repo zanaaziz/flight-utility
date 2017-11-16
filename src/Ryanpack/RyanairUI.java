@@ -1,25 +1,28 @@
 package Ryanpack;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableModel;
 
 public class RyanairUI extends javax.swing.JFrame {
     
-    private String filePath = "flights.txt";
+    private String filePath = "data.txt";
     
     private void loadData(){
-        // creates a file object which takes the path to a file (in our case we've stored it in a variable called 'filePath')
         File file = new File(filePath);
 
-        // 
+        // gets the tabke model
         DefaultTableModel model = (DefaultTableModel)table.getModel();
         
         // clear table
@@ -31,12 +34,37 @@ public class RyanairUI extends javax.swing.JFrame {
                         
             Object[] lines = br.lines().toArray();
             
-            for(int l = 0; l < lines.length; l++){
-                String[] row = lines[l].toString().split("//");
+            for (Object line : lines) {
+                String[] row = line.toString().split("//");
                 model.addRow(row);
             }
             
         } catch (FileNotFoundException ex) {
+            Logger.getLogger(RyanairUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private void saveData(){
+        File file = new File(filePath);
+        
+        try {
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            
+            // rows
+            for(int r = 0; r < table.getRowCount(); r++){
+                // columns
+                for(int c = 0; c < table.getColumnCount(); c++){
+                    bw.flush();
+                    bw.write(table.getValueAt(r, c).toString() + "//");
+                }
+                bw.newLine();
+            }
+            
+            bw.close();
+            fw.close();
+            
+        } catch (IOException ex) {
             Logger.getLogger(RyanairUI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -51,11 +79,9 @@ public class RyanairUI extends javax.swing.JFrame {
                     break;
                 }
             }
-        }catch (Exception e) {
+        }catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException e){
             System.out.println(e);
         }
-        
-        loadData();
         
         // default loading of all components
         initComponents();
@@ -64,6 +90,13 @@ public class RyanairUI extends javax.swing.JFrame {
         searchFld.setBorder(BorderFactory.createCompoundBorder(
         searchFld.getBorder(), 
         BorderFactory.createEmptyBorder(5, 5, 5, 5)));
+        
+        loadData();
+        
+        // saves data on exit of app
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            saveData();
+        }));
     }
 
     /**
@@ -180,7 +213,7 @@ public class RyanairUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void refreshBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshBtnActionPerformed
-        // TODO add your handling code here:
+        loadData();
     }//GEN-LAST:event_refreshBtnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

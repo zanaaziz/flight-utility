@@ -84,11 +84,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="searchBtn">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="H:\OPP\OOP Project\ryanair-project\build\classes\ryanpack\Images\search-icon-png-21.png"/>
-        </Property>
-      </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="userIdTF">
       <Events>
