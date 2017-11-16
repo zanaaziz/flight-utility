@@ -1,13 +1,26 @@
 package Ryanpack;
 
 import javax.swing.BorderFactory;
+import javax.swing.UIManager;
+import javax.swing.UIManager.LookAndFeelInfo;
 
 public class RyanairUI extends javax.swing.JFrame {
 
-    /**
-     * Creates new form RyanairUI
-     */
     public RyanairUI() {
+        
+        // setting the look and feel to Nimbus
+        try{
+            for(LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()){
+                if("Nimbus".equals(info.getName())){
+                    UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        }catch (Exception e) {
+            System.out.println(e);
+        }
+        
+        // default loading of all components
         initComponents();
         
         // add padding to search text field
