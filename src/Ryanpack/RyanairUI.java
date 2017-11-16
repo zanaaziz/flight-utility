@@ -1,10 +1,45 @@
 package Ryanpack;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
+import javax.swing.table.DefaultTableModel;
 
 public class RyanairUI extends javax.swing.JFrame {
+    
+    private String filePath = "flights.txt";
+    
+    private void loadData(){
+        // creates a file object which takes the path to a file (in our case we've stored it in a variable called 'filePath')
+        File file = new File(filePath);
+
+        // 
+        DefaultTableModel model = (DefaultTableModel)table.getModel();
+        
+        // clear table
+        model.setRowCount(0);
+        
+        try {
+            FileReader fr = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr);
+                        
+            Object[] lines = br.lines().toArray();
+            
+            for(int l = 0; l < lines.length; l++){
+                String[] row = lines[l].toString().split("//");
+                model.addRow(row);
+            }
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(RyanairUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     public RyanairUI() {
         
@@ -19,6 +54,8 @@ public class RyanairUI extends javax.swing.JFrame {
         }catch (Exception e) {
             System.out.println(e);
         }
+        
+        loadData();
         
         // default loading of all components
         initComponents();
