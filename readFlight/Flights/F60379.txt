@@ -1,0 +1,4 @@
+FlightNo: F60379 
+Departure: Casablanca - 08:34
+Arrival: New York City - 12:45
+
