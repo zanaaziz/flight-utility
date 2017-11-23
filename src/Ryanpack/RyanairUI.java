@@ -166,6 +166,11 @@ public class RyanairUI extends javax.swing.JFrame {
 
         addBtn.setText("Add Flight");
         addBtn.setFocusable(false);
+        addBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -215,6 +220,11 @@ public class RyanairUI extends javax.swing.JFrame {
     private void refreshBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshBtnActionPerformed
         loadData();
     }//GEN-LAST:event_refreshBtnActionPerformed
+
+    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
+       CreateFlightGUI cf = new CreateFlightGUI ();
+       cf.setVisible(true);
+    }//GEN-LAST:event_addBtnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
