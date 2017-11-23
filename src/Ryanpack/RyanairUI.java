@@ -22,7 +22,7 @@ public class RyanairUI extends javax.swing.JFrame {
     private void loadData(){
         File file = new File(filePath);
 
-        // gets the tabke model
+        // gets the table model
         DefaultTableModel model = (DefaultTableModel)table.getModel();
         
         // clear table
