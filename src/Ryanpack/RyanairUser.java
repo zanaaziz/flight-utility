@@ -7,17 +7,13 @@ package Ryanpack;
 
 import java.util.Scanner;
 
-/**
- *
- * @author x16300351
- */
-public class RyanAirUserGUI extends javax.swing.JFrame {
+public class RyanairUser extends javax.swing.JFrame {
     /**
      * Creates new form RyanAirUserGUI
      */
     
     //@reference https://www.youtube.com/watch?v=2nk4rZgqdu0
-    public RyanAirUserGUI() {
+    public RyanairUser() {
         initComponents();
     }
 
@@ -36,7 +32,9 @@ public class RyanAirUserGUI extends javax.swing.JFrame {
         userIdTF = new javax.swing.JTextField();
         backBtn = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Ryanair - User");
+        setResizable(false);
 
         titleLbl.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         titleLbl.setText("Welcome to RyanAir ");
@@ -103,6 +101,7 @@ public class RyanAirUserGUI extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void userIdTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userIdTFActionPerformed
@@ -117,9 +116,6 @@ public class RyanAirUserGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         //Scanner reads text from input in this case it is the text field's text that the scanner is reading
         Scanner readText = new Scanner(userIdTF.getText());
-        
-        
-        
     }//GEN-LAST:event_searchBtnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

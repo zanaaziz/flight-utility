@@ -3,13 +3,14 @@ package Ryanpack;
 public class Ryanair {
 
     public static void main(String[] args) {
-        //For flight table
-        RyanairUI GUI = new RyanairUI();
+        // main flights window.
+        RyanairAdmin GUI = new RyanairAdmin();
         GUI.setVisible(true);
         
-        //User Flight GUI
+        /*
+        // user flight GUI.
         RyanAirUserGUI userGUI = new RyanAirUserGUI();
         userGUI.setVisible(true);
+        */
     }
-    
 }
