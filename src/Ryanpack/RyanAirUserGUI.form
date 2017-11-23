@@ -84,6 +84,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="searchBtn">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchBtnActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="userIdTF">
       <Events>
