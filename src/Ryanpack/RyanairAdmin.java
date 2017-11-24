@@ -139,7 +139,7 @@ public final class RyanairAdmin extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Flight ID", "Pilot ID", "From", "To", "Departure Time", "Arrival Time", "Duration"
+                "Flight ID", "Pilot ID", "From", "To", "Departure Time", "Arrival Time", "Duration (hours)"
             }
         ) {
             boolean[] canEdit = new boolean [] {
