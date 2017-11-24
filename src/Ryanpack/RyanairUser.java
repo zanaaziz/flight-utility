@@ -5,18 +5,15 @@
  */
 package Ryanpack;
 
-/**
- *
- * @author x16300351
- */
-public class RyanAirUserGUI extends javax.swing.JFrame {
-    private String userID;//user ID that will be placed into the search bar
+import java.util.Scanner;
+
+public class RyanairUser extends javax.swing.JFrame {
     /**
      * Creates new form RyanAirUserGUI
      */
     
-    //https://www.youtube.com/watch?v=2nk4rZgqdu0
-    public RyanAirUserGUI() {
+    //@reference https://www.youtube.com/watch?v=2nk4rZgqdu0
+    public RyanairUser() {
         initComponents();
     }
 
@@ -35,7 +32,9 @@ public class RyanAirUserGUI extends javax.swing.JFrame {
         userIdTF = new javax.swing.JTextField();
         backBtn = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Ryanair - User");
+        setResizable(false);
 
         titleLbl.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         titleLbl.setText("Welcome to RyanAir ");
@@ -43,7 +42,11 @@ public class RyanAirUserGUI extends javax.swing.JFrame {
         textLbl.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         textLbl.setText("Please enter your flight Id for information");
 
-        searchBtn.setIcon(new javax.swing.ImageIcon("H:\\OPP\\OOP Project\\ryanair-project\\build\\classes\\ryanpack\\Images\\search-icon-png-21.png")); // NOI18N
+        searchBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtnActionPerformed(evt);
+            }
+        });
 
         userIdTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,6 +101,7 @@ public class RyanAirUserGUI extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void userIdTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userIdTFActionPerformed
@@ -107,6 +111,12 @@ public class RyanAirUserGUI extends javax.swing.JFrame {
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_backBtnActionPerformed
+
+    private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
+        // TODO add your handling code here:
+        //Scanner reads text from input in this case it is the text field's text that the scanner is reading
+        Scanner readText = new Scanner(userIdTF.getText());
+    }//GEN-LAST:event_searchBtnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;

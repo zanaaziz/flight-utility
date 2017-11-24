@@ -10,23 +10,24 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
+import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UIManager.LookAndFeelInfo;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableModel;
 
-public class RyanairUI extends javax.swing.JFrame {
+public final class RyanairAdmin extends javax.swing.JFrame {
     
     private String filePath = "data.txt";
     
-    private void loadData(){
+    public void loadData(){
         File file = new File(filePath);
 
-        // gets the tabke model
-        DefaultTableModel model = (DefaultTableModel)table.getModel();
-        
+        // gets the table tableModel
+        DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
+                
         // clear table
-        model.setRowCount(0);
+        tableModel.setRowCount(0);
         
         try {
             FileReader fr = new FileReader(file);
@@ -36,15 +37,15 @@ public class RyanairUI extends javax.swing.JFrame {
             
             for (Object line : lines) {
                 String[] row = line.toString().split("//");
-                model.addRow(row);
+                tableModel.addRow(row);
             }
             
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(RyanairUI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RyanairAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
-    private void saveData(){
+    public void saveData(){
         File file = new File(filePath);
         
         try {
@@ -65,11 +66,18 @@ public class RyanairUI extends javax.swing.JFrame {
             fw.close();
             
         } catch (IOException ex) {
-            Logger.getLogger(RyanairUI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RyanairAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    // a public function that will add padding to a given JTextField.
+    public void addPaddingToJTextField(JTextField textfield){
+        textfield.setBorder(BorderFactory.createCompoundBorder(
+        textfield.getBorder(),
+        BorderFactory.createEmptyBorder(5, 5, 5, 5)));
+    }
 
-    public RyanairUI() {
+    public RyanairAdmin() {
         
         // setting the look and feel to Nimbus
         try{
@@ -87,9 +95,7 @@ public class RyanairUI extends javax.swing.JFrame {
         initComponents();
         
         // add padding to search text field
-        searchFld.setBorder(BorderFactory.createCompoundBorder(
-        searchFld.getBorder(), 
-        BorderFactory.createEmptyBorder(5, 5, 5, 5)));
+        addPaddingToJTextField(searchFld);
         
         loadData();
         
@@ -117,9 +123,16 @@ public class RyanairUI extends javax.swing.JFrame {
         addBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Ryaministrator");
+        setTitle("Ryanair - Admin");
         setPreferredSize(new java.awt.Dimension(1000, 600));
         setResizable(false);
+        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
+            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
+                formWindowGainedFocus(evt);
+            }
+            public void windowLostFocus(java.awt.event.WindowEvent evt) {
+            }
+        });
 
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -222,9 +235,13 @@ public class RyanairUI extends javax.swing.JFrame {
     }//GEN-LAST:event_refreshBtnActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-       CreateFlightGUI cf = new CreateFlightGUI ();
-       cf.setVisible(true);
+       addFlight addFlightUI = new addFlight();
+       addFlightUI.setVisible(true);
     }//GEN-LAST:event_addBtnActionPerformed
+
+    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
+        loadData();
+    }//GEN-LAST:event_formWindowGainedFocus
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
@@ -233,6 +250,6 @@ public class RyanairUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton refreshBtn;
     private javax.swing.JTextField searchFld;
-    private javax.swing.JTable table;
+    public javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
 }
