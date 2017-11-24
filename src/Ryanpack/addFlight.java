@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class addFlight extends javax.swing.JFrame {
     
-    RyanairAdmin admin = new RyanairAdmin();
+    Admin admin = new Admin();
 
     /**
      * Creates new form CreateFlightGUI

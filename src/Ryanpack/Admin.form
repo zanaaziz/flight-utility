@@ -41,10 +41,11 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="refreshBtn" alignment="1" min="-2" pref="150" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="editBtn" min="-2" pref="150" max="-2" attributes="0"/>
-                          <Component id="deleteBtn" min="-2" pref="150" max="-2" attributes="0"/>
-                          <Component id="addBtn" min="-2" pref="150" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="editBtn" pref="150" max="32767" attributes="0"/>
+                          <Component id="deleteBtn" pref="150" max="32767" attributes="0"/>
+                          <Component id="addBtn" pref="150" max="32767" attributes="0"/>
+                          <Component id="homeBtn" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
@@ -60,6 +61,8 @@
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="homeBtn" min="-2" pref="50" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="refreshBtn" min="-2" pref="50" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="addBtn" min="-2" pref="50" max="-2" attributes="0"/>
@@ -183,6 +186,15 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addBtnActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="homeBtn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Back To Home"/>
+        <Property name="focusable" type="boolean" value="false"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="homeBtnActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
