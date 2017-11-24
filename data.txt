@@ -1,10 +1,4 @@
 F82490//P492//Dublin, Ireland//Toronto, Canada//07:00//13:00//7//
 F13574//P043//London, UK//Paris, France//09:00//12:00//4//
 F67478//P658//Tel Aviv, Israel//Dublin, Ireland//17:30//04:15//13//
-<<<<<<< HEAD
-P00420//P420//Amsterdam, Netherlands//Denver, USA//04:20//04:20//4.20//
-F98600//P261//New York, USA//Dublin, Ireland//15:00//02:00//#//
-F98668//P941//asdasd//asdssda//sadasd//asdas//#//
-=======
-F42803//P209//Toronto, Canada//New York, USA//17:00//20:00//3//
->>>>>>> c2d899e629a3322935800a611eb3a4913c99a184
+F93164//P284//Dublin//Riga//15:00//17:00//2//
