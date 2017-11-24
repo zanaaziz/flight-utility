@@ -5,7 +5,12 @@
  */
 package Ryanpack;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 public class addFlight extends javax.swing.JFrame {
@@ -35,6 +40,22 @@ public class addFlight extends javax.swing.JFrame {
         Random pilotNumberGenerator = new Random();
         int pilotID = pilotNumberGenerator.nextInt(999 - 000 + 1) + 000;
         return Integer.toString(pilotID);
+    }
+    
+    private String calculateFlightDuration(){
+        SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+        long difference = 0;
+                
+        try {
+            Date departureTime = format.parse(departureFld.getText());
+            Date arrivalTime = format.parse(arrivalFld.getText());
+            
+            difference = (arrivalTime.getTime() - departureTime.getTime()) / (60 * 60 * 1000) % 24;
+        } catch (ParseException ex) {
+            Logger.getLogger(addFlight.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return Long.toString(Math.abs(difference));
     }
 
     /**
@@ -132,7 +153,7 @@ public class addFlight extends javax.swing.JFrame {
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         DefaultTableModel model = (DefaultTableModel)admin.table.getModel();
-        Object[] newFlight = { "F"+generateFlightID(), "P"+generatePilotID(), fromFld.getText(), toFld.getText(), departureFld.getText(), arrivalFld.getText(), "#" };
+        Object[] newFlight = { "F"+generateFlightID(), "P"+generatePilotID(), fromFld.getText(), toFld.getText(), departureFld.getText(), arrivalFld.getText(), calculateFlightDuration() };
         model.addRow(newFlight);
         this.dispose();
         admin.saveData();
