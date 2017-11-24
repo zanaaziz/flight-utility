@@ -12,13 +12,13 @@ import java.util.Map;
 
 public class Home extends javax.swing.JFrame {
     
-    Admin adminPanel = new Admin();
+    Admin adminUI = new Admin();
     
     //@reference https://www.youtube.com/watch?v=2nk4rZgqdu0
     public Home() {
         initComponents();
         
-        adminPanel.addPaddingToJTextField(userIdFld);
+        adminUI.addPaddingToJTextField(userIdFld);
     }
 
     /**
@@ -136,7 +136,7 @@ public class Home extends javax.swing.JFrame {
 
     private void adminLblMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminLblMouseReleased
         this.dispose();
-        adminPanel.setVisible(true);
+        adminUI.setVisible(true);
     }//GEN-LAST:event_adminLblMouseReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
