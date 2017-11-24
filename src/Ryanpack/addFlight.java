@@ -5,6 +5,7 @@
  */
 package Ryanpack;
 
+import java.util.Random;
 import javax.swing.table.DefaultTableModel;
 
 public class addFlight extends javax.swing.JFrame {
@@ -22,7 +23,18 @@ public class addFlight extends javax.swing.JFrame {
         admin.addPaddingToJTextField(toFld);
         admin.addPaddingToJTextField(departureFld);
         admin.addPaddingToJTextField(arrivalFld);
-        admin.addPaddingToJTextField(pilotIdFld);
+    }
+    
+    private String generateFlightID(){
+        Random flightNumberGenerator = new Random();
+        int flightID = flightNumberGenerator.nextInt(99999 - 00000 + 1) + 00000;
+        return Integer.toString(flightID);
+    }
+    
+    private String generatePilotID(){
+        Random pilotNumberGenerator = new Random();
+        int pilotID = pilotNumberGenerator.nextInt(999 - 000 + 1) + 000;
+        return Integer.toString(pilotID);
     }
 
     /**
@@ -43,8 +55,6 @@ public class addFlight extends javax.swing.JFrame {
         departureFld = new javax.swing.JTextField();
         arrivalLbl = new javax.swing.JLabel();
         arrivalFld = new javax.swing.JTextField();
-        pilotIdLbl = new javax.swing.JLabel();
-        pilotIdFld = new javax.swing.JTextField();
         addBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -60,8 +70,6 @@ public class addFlight extends javax.swing.JFrame {
         departureLbl.setText("Departure time");
 
         arrivalLbl.setText("Arrival time");
-
-        pilotIdLbl.setText("Pilot ID");
 
         addBtn.setText("Add Flight");
         addBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -83,14 +91,12 @@ public class addFlight extends javax.swing.JFrame {
                     .addComponent(toFld)
                     .addComponent(departureFld)
                     .addComponent(arrivalFld)
-                    .addComponent(pilotIdFld)
                     .addComponent(addBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(instructionsLbl)
                             .addComponent(departureLbl)
-                            .addComponent(arrivalLbl)
-                            .addComponent(pilotIdLbl))
+                            .addComponent(arrivalLbl))
                         .addGap(0, 160, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -116,10 +122,6 @@ public class addFlight extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(arrivalFld, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(pilotIdLbl)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pilotIdFld, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -130,7 +132,7 @@ public class addFlight extends javax.swing.JFrame {
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         DefaultTableModel model = (DefaultTableModel)admin.table.getModel();
-        Object[] newFlight = { "P#####", fromFld.getText(), toFld.getText(), departureFld.getText(), arrivalFld.getText(), pilotIdFld.getText(), "#" };
+        Object[] newFlight = { "F"+generateFlightID(), "P"+generatePilotID(), fromFld.getText(), toFld.getText(), departureFld.getText(), arrivalFld.getText(), "#" };
         model.addRow(newFlight);
         this.dispose();
         admin.saveData();
@@ -145,8 +147,6 @@ public class addFlight extends javax.swing.JFrame {
     private javax.swing.JTextField fromFld;
     private javax.swing.JLabel fromLbl;
     private javax.swing.JLabel instructionsLbl;
-    private javax.swing.JTextField pilotIdFld;
-    private javax.swing.JLabel pilotIdLbl;
     private javax.swing.JTextField toFld;
     private javax.swing.JLabel toLbl;
     // End of variables declaration//GEN-END:variables
