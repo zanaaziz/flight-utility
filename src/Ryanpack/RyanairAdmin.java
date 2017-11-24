@@ -173,6 +173,11 @@ public final class RyanairAdmin extends javax.swing.JFrame {
 
         editBtn.setText("Edit Flight");
         editBtn.setFocusable(false);
+        editBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editBtnActionPerformed(evt);
+            }
+        });
 
         deleteBtn.setText("Delete Flight");
         deleteBtn.setFocusable(false);
@@ -242,6 +247,10 @@ public final class RyanairAdmin extends javax.swing.JFrame {
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
         loadData();
     }//GEN-LAST:event_formWindowGainedFocus
+
+    private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_editBtnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
