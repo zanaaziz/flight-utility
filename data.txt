@@ -1,3 +1,2 @@
-F82490//P492//James McGill//Dublin, Ireland//Toronto, Canada//07:00//13:00//
-F13574//P043//Alan Smith//London, UK//Paris, France//09:00//12:00//
-F67478//P658//Theresa Williams//Tel Aviv, Israel//Dublin, Ireland//17:30//04:15//
+F82490//P492//Dublin, Ireland//Toronto, Canada//07:00//13:00//7//
+F13574//P043//London, UK//Paris, France//09:00//12:00//4//
