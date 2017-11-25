@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Ryanpack;
 
 import java.awt.Cursor;
@@ -109,7 +104,6 @@ public class Home extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
-        // TODO add your handling code here:
         //@reference: https://www.youtube.com/watch?v=vP3lnY-MUu0
         //Scanner to ask the user for the name of the file.
         //The file name is will be placed in the flight id text field
