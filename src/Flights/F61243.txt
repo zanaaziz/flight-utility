@@ -1,0 +1,5 @@
+FlightNo: F61243
+Departure: Bangkok - 08:34
+Arrival: Nairobi - 12:45
+
+
