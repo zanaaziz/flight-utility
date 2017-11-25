@@ -8,7 +8,13 @@ package Ryanpack;
 import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.font.TextAttribute;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Map;
+import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 public class Home extends javax.swing.JFrame {
     
@@ -33,8 +39,9 @@ public class Home extends javax.swing.JFrame {
         welcomeLbl = new javax.swing.JLabel();
         instructionsLbl = new javax.swing.JLabel();
         userIdFld = new javax.swing.JTextField();
-        backBtn = new javax.swing.JButton();
+        searchBtn = new javax.swing.JButton();
         adminLbl = new javax.swing.JLabel();
+        backBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ryanair - Welcome");
@@ -51,10 +58,10 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        backBtn.setText("Search");
-        backBtn.addActionListener(new java.awt.event.ActionListener() {
+        searchBtn.setText("Search");
+        searchBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backBtnActionPerformed(evt);
+                searchBtnActionPerformed(evt);
             }
         });
 
@@ -72,6 +79,13 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
+        backBtn.setText("Exit");
+        backBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -84,8 +98,9 @@ public class Home extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(welcomeLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(instructionsLbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 102, Short.MAX_VALUE))
-                    .addComponent(backBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                        .addComponent(backBtn))
+                    .addComponent(searchBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(adminLbl)))
@@ -95,14 +110,16 @@ public class Home extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(welcomeLbl)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(welcomeLbl)
+                    .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(instructionsLbl)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(userIdFld, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addComponent(adminLbl)
                 .addContainerGap())
         );
@@ -115,9 +132,42 @@ public class Home extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_userIdFldActionPerformed
 
-    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
+    private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_backBtnActionPerformed
+        //@reference: https://www.youtube.com/watch?v=vP3lnY-MUu0
+        //Scanner to ask the user for the name of the file.
+        //The file name is will be placed in the flight id text field
+        Scanner scanner = new Scanner(userIdFld.getText());
+        
+        //set to null because we dont know what the file is until the user types it
+        BufferedReader buffRead = null;
+        
+        //variable that stores each line that is read as the programs loops through
+        String line;     
+        
+        //A try catch is used if the programs runs into an error such as the file not being found it will catch the error and print it
+        try{
+            //the buffered reader is called then the filereader is also called to locate the file and read its name
+            //scanner.next to read the next string 
+            buffRead = new BufferedReader(new FileReader("C:\\Users\\ayofo\\Documents\\GitHub\\ryanair-project\\data.txt" + scanner.next()));
+            
+        } catch (FileNotFoundException e) {
+            JOptionPane.showMessageDialog(null, "This flight number does not exist!");
+        }
+        //Reading of the file begins
+        try{
+            //A while loop is used to read through every line of text using readLine method and to call variables initialised outside of the loop
+            //This will loop as long as the file is not equal to null meaning that when it is not the loop will know that it is at the end of the line
+            while((line=buffRead.readLine()) != null){
+                //JOptionPane is called to display the contents of the file line by line
+                JOptionPane.showMessageDialog(null, ""+line);
+                
+                    
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage() + " Error reading file");
+        } 
+    }//GEN-LAST:event_searchBtnActionPerformed
 
     private void adminLblMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminLblMouseEntered
         Font font = adminLbl.getFont();
@@ -139,10 +189,16 @@ public class Home extends javax.swing.JFrame {
         adminUI.setVisible(true);
     }//GEN-LAST:event_adminLblMouseReleased
 
+    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_backBtnActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel adminLbl;
     private javax.swing.JButton backBtn;
     private javax.swing.JLabel instructionsLbl;
+    private javax.swing.JButton searchBtn;
     private javax.swing.JTextField userIdFld;
     private javax.swing.JLabel welcomeLbl;
     // End of variables declaration//GEN-END:variables
