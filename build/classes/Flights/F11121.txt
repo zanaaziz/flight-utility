@@ -1,4 +1,0 @@
-FlightNo: F11121 
-Departure: London - 08:34
-Arrival: Beijing - 12:45
-
