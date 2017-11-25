@@ -1,5 +1,0 @@
-FlightNo: F70911
-Departure: Yokohama - 08:34
-Arrival: Tehran - 12:45
-
-
