@@ -41,7 +41,6 @@ public class Home extends javax.swing.JFrame {
         userIdFld = new javax.swing.JTextField();
         searchBtn = new javax.swing.JButton();
         adminLbl = new javax.swing.JLabel();
-        backBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ryanair - Welcome");
@@ -51,12 +50,6 @@ public class Home extends javax.swing.JFrame {
         welcomeLbl.setText("Welcome to the Ryanair flight utility! ");
 
         instructionsLbl.setText("Please enter your flight ID:");
-
-        userIdFld.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userIdFldActionPerformed(evt);
-            }
-        });
 
         searchBtn.setText("Search");
         searchBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -79,13 +72,6 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        backBtn.setText("Exit");
-        backBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backBtnActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -94,32 +80,26 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(userIdFld)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(welcomeLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(instructionsLbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
-                        .addComponent(backBtn))
                     .addComponent(searchBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(adminLbl)))
+                        .addComponent(adminLbl))
+                    .addComponent(welcomeLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
+                    .addComponent(instructionsLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(welcomeLbl)
-                    .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(welcomeLbl)
                 .addGap(18, 18, 18)
                 .addComponent(instructionsLbl)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(userIdFld, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addComponent(adminLbl)
                 .addContainerGap())
         );
@@ -127,10 +107,6 @@ public class Home extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void userIdFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userIdFldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userIdFldActionPerformed
 
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
         // TODO add your handling code here:
@@ -149,7 +125,7 @@ public class Home extends javax.swing.JFrame {
         try{
             //the buffered reader is called then the filereader is also called to locate the file and read its name
             //scanner.next to read the next string 
-            buffRead = new BufferedReader(new FileReader("C:\\Users\\ayofo\\Documents\\GitHub\\ryanair-project\\data.txt" + scanner.next()));
+            buffRead = new BufferedReader(new FileReader("data.txt" + scanner.next()));
             
         } catch (FileNotFoundException e) {
             JOptionPane.showMessageDialog(null, "This flight number does not exist!");
@@ -161,12 +137,11 @@ public class Home extends javax.swing.JFrame {
             while((line=buffRead.readLine()) != null){
                 //JOptionPane is called to display the contents of the file line by line
                 JOptionPane.showMessageDialog(null, ""+line);
-                
-                    
             }
+            
         } catch (IOException e) {
             System.out.println(e.getMessage() + " Error reading file");
-        } 
+        }
     }//GEN-LAST:event_searchBtnActionPerformed
 
     private void adminLblMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminLblMouseEntered
@@ -189,14 +164,8 @@ public class Home extends javax.swing.JFrame {
         adminUI.setVisible(true);
     }//GEN-LAST:event_adminLblMouseReleased
 
-    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-        // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_backBtnActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel adminLbl;
-    private javax.swing.JButton backBtn;
     private javax.swing.JLabel instructionsLbl;
     private javax.swing.JButton searchBtn;
     private javax.swing.JTextField userIdFld;
