@@ -29,11 +29,11 @@ public final class Admin extends javax.swing.JFrame {
         // add padding to search text field
         func.addPaddingToJTextField(searchFld);
         
-        func.loadData();
+        func.loadData(filePath, table);
         
         // saves data on exit of app
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            func.saveData();
+            func.saveData(filePath, table);
         }));
     }
 
@@ -177,7 +177,7 @@ public final class Admin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void refreshBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshBtnActionPerformed
-        func.loadData();
+        func.loadData(filePath, table);
     }//GEN-LAST:event_refreshBtnActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
@@ -186,7 +186,7 @@ public final class Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
-        func.loadData();
+        func.loadData(filePath, table);
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
