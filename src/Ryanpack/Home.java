@@ -13,15 +13,15 @@ import javax.swing.JOptionPane;
 
 public class Home extends javax.swing.JFrame {
     
-    Admin adminUI = new Admin();
+    Main func = new Main();
     
     //@reference https://www.youtube.com/watch?v=2nk4rZgqdu0
     public Home() {
         initComponents();
         
-        adminUI.addPaddingToJTextField(searchFld);
+        func.addPaddingToJTextField(searchFld);
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -185,6 +185,7 @@ public class Home extends javax.swing.JFrame {
 
     private void adminLblMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminLblMouseReleased
         this.dispose();
+        Admin adminUI = new Admin();
         adminUI.setVisible(true);
     }//GEN-LAST:event_adminLblMouseReleased
 
