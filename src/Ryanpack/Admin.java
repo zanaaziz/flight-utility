@@ -190,7 +190,8 @@ public final class Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
-        // TODO add your handling code here:
+        editFlight editFlightUI = new editFlight ();
+            editFlightUI.setVisible(true);
     }//GEN-LAST:event_editBtnActionPerformed
 
     private void homeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBtnActionPerformed
