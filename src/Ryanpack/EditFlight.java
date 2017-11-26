@@ -1,8 +1,8 @@
 package Ryanpack;
 
-public class editFlight extends javax.swing.JFrame {
+public class EditFlight extends javax.swing.JFrame {
     
-    public editFlight() {
+    public EditFlight() {
         initComponents();
     }
 
