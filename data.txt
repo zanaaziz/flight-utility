@@ -1,8 +1,6 @@
-<<<<<<< HEAD
-F82490//P492//Dublin, Ireland//Toronto, Canada//07:00//13:00//7//
-F13574//P043//London, UK//Paris, France//09:00//12:00//4//
-=======
 F49878//P205//Dublin, Ireland//New York, USA//24/11/2017 23:00//25/11/2017 07:00//8//
 F68953//P511//Hong Kong, China//Toronto, Canada//26/11/2017 15:30//28/11/2017 09:00//41//
-F42050//P867//Tiberias, Israel//Dublin, Ireland//28/11/2017 16:00//29/11/2017 02:00//10//
->>>>>>> 697024a434bf88a85a984d663b6cd5d2640ba01d
+F32002//P819//Moscow, Russia//Paris, France//27/11/2017 14:45//28/11/2017 12:30//21//
+F21948//P916//Tiberias, Israel//Singapore, Singapore//26/11/2017 11:00//26/11/2017 18:00//7//
+F76910//P302//Kiev, Ukraine//Berlin, Germany//27/11/2017 13:00//27/11/2017 14:20//1//
+F49976//P800//Jakarta, Indonesia//Lagos, Nigeria//28/11/2017 12:00//29/11/2017 02:00//14//

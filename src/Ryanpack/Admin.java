@@ -125,7 +125,6 @@ public final class Admin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ryanair - Admin");
-        setPreferredSize(new java.awt.Dimension(1200, 700));
         setResizable(false);
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
             public void windowGainedFocus(java.awt.event.WindowEvent evt) {
@@ -152,6 +151,7 @@ public final class Admin extends javax.swing.JFrame {
             }
         });
         table.setFocusable(false);
+        table.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         table.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(table);
         if (table.getColumnModel().getColumnCount() > 0) {

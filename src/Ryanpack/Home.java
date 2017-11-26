@@ -1,14 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Ryanpack;
 
 import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.font.TextAttribute;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Map;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class Home extends javax.swing.JFrame {
     
@@ -18,7 +19,7 @@ public class Home extends javax.swing.JFrame {
     public Home() {
         initComponents();
         
-        adminUI.addPaddingToJTextField(userIdFld);
+        adminUI.addPaddingToJTextField(searchFld);
     }
 
     /**
@@ -32,8 +33,8 @@ public class Home extends javax.swing.JFrame {
 
         welcomeLbl = new javax.swing.JLabel();
         instructionsLbl = new javax.swing.JLabel();
-        userIdFld = new javax.swing.JTextField();
-        backBtn = new javax.swing.JButton();
+        searchFld = new javax.swing.JTextField();
+        searchBtn = new javax.swing.JButton();
         adminLbl = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -45,16 +46,10 @@ public class Home extends javax.swing.JFrame {
 
         instructionsLbl.setText("Please enter your flight ID:");
 
-        userIdFld.addActionListener(new java.awt.event.ActionListener() {
+        searchBtn.setText("Search");
+        searchBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userIdFldActionPerformed(evt);
-            }
-        });
-
-        backBtn.setText("Search");
-        backBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backBtnActionPerformed(evt);
+                searchBtnActionPerformed(evt);
             }
         });
 
@@ -79,16 +74,13 @@ public class Home extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(userIdFld)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(welcomeLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(instructionsLbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 102, Short.MAX_VALUE))
-                    .addComponent(backBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(searchFld)
+                    .addComponent(searchBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(adminLbl)))
+                        .addComponent(adminLbl))
+                    .addComponent(welcomeLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
+                    .addComponent(instructionsLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -99,10 +91,10 @@ public class Home extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(instructionsLbl)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(userIdFld, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(searchFld, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addComponent(adminLbl)
                 .addContainerGap())
         );
@@ -111,13 +103,70 @@ public class Home extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void userIdFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userIdFldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userIdFldActionPerformed
+    @SuppressWarnings("StringConcatenationInsideStringBufferAppend")
+    private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
+        // check if the input has 6 characters such as 'F12345'
+        if(searchFld.getText().length() == 6){
+            try {
+                // scanner file object
+                Scanner file = new Scanner(new File("data.txt"));
 
-    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_backBtnActionPerformed
+                // while file is not empty...
+                while(file.hasNextLine()){
+                    // a string to store the current line it's reading
+                    String line = file.nextLine();
+
+                    // check if the current line contains the flight ID entered...
+                    if(line.contains(searchFld.getText())){
+
+                        // the string is split by '//' into an array
+                        String[] flightInfo = line.split("//");
+
+                        // a template array for the final output message
+                        String[] flightInfoTemplate = {
+                            "Flight ID: ",
+                            "Pilot ID: ",
+                            "From: ",
+                            "To: ",
+                            "Departure Time: ",
+                            "Arrival Time: ",
+                            "Duration (hours): "
+                        };
+
+                        // a stringbuilder to store our output message
+                        StringBuilder output = new StringBuilder();
+
+                        // for each element in flightInfo, append an element in the template array, followed by the corresponding data
+                        for(int i = 0; i < flightInfo.length; i++){
+                            output.append(flightInfoTemplate[i] + "\n" + flightInfo[i] + "\n\n");
+                        }
+
+                        // finally, show the output, and stop the loop by break
+                        JOptionPane.showMessageDialog(null, output, flightInfo[0], JOptionPane.PLAIN_MESSAGE);
+                        break;
+
+                    // if the flight ID was not found...
+                    }else{
+                        // makes sure if it has reached the end of the file, shows message, and breaks
+                        if(!file.hasNextLine()){
+                            JOptionPane.showMessageDialog(null, "Sorry, the flight ID you have entered does not exist." , "Invalid Flight ID", JOptionPane.ERROR_MESSAGE);
+                            break;
+                        }
+                    }
+                }
+                
+                // closing the scanner file object
+                file.close();
+
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        // if the input was not 6 characters...
+        }else{
+            JOptionPane.showMessageDialog(null, "Please ensure that you enter your flight ID in the format of 'F12345'.", "Invalid Search Format", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_searchBtnActionPerformed
 
     private void adminLblMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminLblMouseEntered
         Font font = adminLbl.getFont();
@@ -141,9 +190,9 @@ public class Home extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel adminLbl;
-    private javax.swing.JButton backBtn;
     private javax.swing.JLabel instructionsLbl;
-    private javax.swing.JTextField userIdFld;
+    private javax.swing.JButton searchBtn;
+    private javax.swing.JTextField searchFld;
     private javax.swing.JLabel welcomeLbl;
     // End of variables declaration//GEN-END:variables
 }
