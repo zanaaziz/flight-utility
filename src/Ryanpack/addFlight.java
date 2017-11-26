@@ -27,13 +27,13 @@ public class addFlight extends javax.swing.JFrame {
     
     private String generateFlightID(){
         Random flightNumberGenerator = new Random();
-        int flightID = flightNumberGenerator.nextInt(99999 - 00000 + 1) + 00000;
+        int flightID = flightNumberGenerator.nextInt(99999 - 10000 + 1) + 10000;
         return Integer.toString(flightID);
     }
     
     private String generatePilotID(){
         Random pilotNumberGenerator = new Random();
-        int pilotID = pilotNumberGenerator.nextInt(999 - 000 + 1) + 000;
+        int pilotID = pilotNumberGenerator.nextInt(999 - 100 + 1) + 100;
         return Integer.toString(pilotID);
     }
     

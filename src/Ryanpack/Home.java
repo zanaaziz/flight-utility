@@ -103,49 +103,68 @@ public class Home extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    @SuppressWarnings("StringConcatenationInsideStringBufferAppend")
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
-        try {
-            Scanner file = new Scanner(new File("data.txt"));
-            
-            while(file.hasNextLine()){
-                String line = file.nextLine();
-                
-                if(line.contains(searchFld.getText())){
-                    
-                    String[] flightInfo = line.split("//");
-                    
-                    String[] flightInfoTemplate = {
-                        "Flight ID: ",
-                        "Pilot ID: ",
-                        "From: ",
-                        "To: ",
-                        "Departure Time: ",
-                        "Arrival Time: ",
-                        "Duration (hours): "
-                    };
-                    
-                    StringBuilder output = new StringBuilder();
-                    
-                    for(int i = 0; i < flightInfo.length; i++){
-                        output.append(flightInfoTemplate[i] + "\n" + flightInfo[i] + "\n\n");
-                        
-                    }
-                    
-                    JOptionPane.showMessageDialog(null, output);
-                    break;
-                    
-                }else{
-                    if(!file.hasNextLine()){
-                        JOptionPane.showMessageDialog(null, "Sorry, the flight ID you entered does not exist.");
+        // check if the input has 6 characters such as 'F12345'
+        if(searchFld.getText().length() == 6){
+            try {
+                // scanner file object
+                Scanner file = new Scanner(new File("data.txt"));
+
+                // while file is not empty...
+                while(file.hasNextLine()){
+                    // a string to store the current line it's reading
+                    String line = file.nextLine();
+
+                    // check if the current line contains the flight ID entered...
+                    if(line.contains(searchFld.getText())){
+
+                        // the string is split by '//' into an array
+                        String[] flightInfo = line.split("//");
+
+                        // a template array for the final output message
+                        String[] flightInfoTemplate = {
+                            "Flight ID: ",
+                            "Pilot ID: ",
+                            "From: ",
+                            "To: ",
+                            "Departure Time: ",
+                            "Arrival Time: ",
+                            "Duration (hours): "
+                        };
+
+                        // a stringbuilder to store our output message
+                        StringBuilder output = new StringBuilder();
+
+                        // for each element in flightInfo, append an element in the template array, followed by the corresponding data
+                        for(int i = 0; i < flightInfo.length; i++){
+                            output.append(flightInfoTemplate[i] + "\n" + flightInfo[i] + "\n\n");
+                        }
+
+                        // finally, show the output, and stop the loop by break
+                        JOptionPane.showMessageDialog(null, output, flightInfo[0], JOptionPane.PLAIN_MESSAGE);
                         break;
+
+                    // if the flight ID was not found...
+                    }else{
+                        // makes sure if it has reached the end of the file, shows message, and breaks
+                        if(!file.hasNextLine()){
+                            JOptionPane.showMessageDialog(null, "Sorry, the flight ID you have entered does not exist." , "Invalid Flight ID", JOptionPane.ERROR_MESSAGE);
+                            break;
+                        }
                     }
                 }
+                
+                // closing the scanner file object
+                file.close();
+
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
             }
             
-            file.close();
-            
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        // if the input was not 6 characters...
+        }else{
+            JOptionPane.showMessageDialog(null, "Please ensure that you enter your flight ID in the format of 'F12345'.", "Invalid Search Format", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_searchBtnActionPerformed
 
