@@ -30,14 +30,15 @@ public class editFlight extends javax.swing.JFrame {
         arrivalFld = new javax.swing.JTextField();
         editBtn = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(400, 463));
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Edit Flight");
+        setResizable(false);
 
         editinstructionsLbl.setText("Please enter the new flight details:");
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         jLabel2.setForeground(java.awt.Color.gray);
-        jLabel2.setText("city, country");
+        jLabel2.setText("Example: City, Country");
 
         fromLbl.setText("From:");
 
@@ -45,19 +46,19 @@ public class editFlight extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         jLabel3.setForeground(java.awt.Color.gray);
-        jLabel3.setText("city, country");
+        jLabel3.setText("Example: City, Country");
 
         departureLbl.setText("Departure Time:");
 
         departureFormatLbl.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         departureFormatLbl.setForeground(java.awt.Color.gray);
-        departureFormatLbl.setText("dd/mm/yyyy hh:mm");
+        departureFormatLbl.setText("Example: dd/mm/yyyy hh:mm");
 
         arrivalLbl.setText("Arrival Time:");
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         jLabel1.setForeground(java.awt.Color.gray);
-        jLabel1.setText("dd/mm/yyyy hh:mm");
+        jLabel1.setText("Example: dd/mm/yyyy hh:mm");
 
         editBtn.setText("Edit Flight");
         editBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -84,7 +85,7 @@ public class editFlight extends javax.swing.JFrame {
                         .addComponent(jLabel3))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(departureLbl)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
                         .addComponent(departureFormatLbl))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(fromLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -134,6 +135,7 @@ public class editFlight extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed

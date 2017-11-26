@@ -45,7 +45,7 @@ public class AddFlight extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Ryanair - Add Flight");
+        setTitle("Add Flight");
         setResizable(false);
 
         instructionsLbl.setText("Please enter the flight details below:");
@@ -67,19 +67,19 @@ public class AddFlight extends javax.swing.JFrame {
 
         departureFormatLbl.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         departureFormatLbl.setForeground(java.awt.Color.gray);
-        departureFormatLbl.setText("dd/mm/yyyy hh:mm");
+        departureFormatLbl.setText("Example: dd/mm/yyyy hh:mm");
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         jLabel1.setForeground(java.awt.Color.gray);
-        jLabel1.setText("dd/mm/yyyy hh:mm");
+        jLabel1.setText("Example: dd/mm/yyyy hh:mm");
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         jLabel2.setForeground(java.awt.Color.gray);
-        jLabel2.setText("city, country");
+        jLabel2.setText("Example: City, Country");
 
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         jLabel3.setForeground(java.awt.Color.gray);
-        jLabel3.setText("city, country");
+        jLabel3.setText("Example: City, Country");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

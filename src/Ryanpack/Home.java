@@ -36,9 +36,10 @@ public class Home extends javax.swing.JFrame {
         searchFld = new javax.swing.JTextField();
         searchBtn = new javax.swing.JButton();
         adminLbl = new javax.swing.JLabel();
+        exampleLbl = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Ryanair - Welcome");
+        setTitle("Ryanair Flight Utility");
         setResizable(false);
 
         welcomeLbl.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
@@ -67,6 +68,10 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
+        exampleLbl.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
+        exampleLbl.setForeground(java.awt.Color.gray);
+        exampleLbl.setText("Example: F12345");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -80,7 +85,10 @@ public class Home extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(adminLbl))
                     .addComponent(welcomeLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
-                    .addComponent(instructionsLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(instructionsLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(exampleLbl)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -89,7 +97,9 @@ public class Home extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(welcomeLbl)
                 .addGap(18, 18, 18)
-                .addComponent(instructionsLbl)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(instructionsLbl)
+                    .addComponent(exampleLbl))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(searchFld, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -191,6 +201,7 @@ public class Home extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel adminLbl;
+    private javax.swing.JLabel exampleLbl;
     private javax.swing.JLabel instructionsLbl;
     private javax.swing.JButton searchBtn;
     private javax.swing.JTextField searchFld;
