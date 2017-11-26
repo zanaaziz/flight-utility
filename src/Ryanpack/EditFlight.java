@@ -2,6 +2,9 @@ package Ryanpack;
 
 public class EditFlight extends javax.swing.JFrame {
     
+    Main func = new Main();
+    Admin admin = new Admin();
+    
     public EditFlight() {
         initComponents();
     }
@@ -139,7 +142,7 @@ public class EditFlight extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
-      
+        
     }//GEN-LAST:event_editBtnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
