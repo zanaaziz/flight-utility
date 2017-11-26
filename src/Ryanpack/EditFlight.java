@@ -52,13 +52,13 @@ public class EditFlight extends javax.swing.JFrame {
 
         departureFormatLbl.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         departureFormatLbl.setForeground(java.awt.Color.gray);
-        departureFormatLbl.setText("Example: dd/mm/yyyy hh:mm");
+        departureFormatLbl.setText("Example: DD/MM/YYYY HH:MM");
 
         arrivalLbl.setText("Arrival Time:");
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         jLabel1.setForeground(java.awt.Color.gray);
-        jLabel1.setText("Example: dd/mm/yyyy hh:mm");
+        jLabel1.setText("Example: DD/MM/YYYY HH:MM");
 
         editBtn.setText("Edit Flight");
         editBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -85,7 +85,7 @@ public class EditFlight extends javax.swing.JFrame {
                         .addComponent(jLabel3))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(departureLbl)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
                         .addComponent(departureFormatLbl))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(fromLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)

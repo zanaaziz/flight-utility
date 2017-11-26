@@ -17,8 +17,8 @@ public class Home extends javax.swing.JFrame {
     
     //@reference https://www.youtube.com/watch?v=2nk4rZgqdu0
     public Home() {
+        func.setTheme();
         initComponents();
-        
         func.addPaddingToJTextField(searchFld);
     }
     
@@ -48,6 +48,7 @@ public class Home extends javax.swing.JFrame {
         instructionsLbl.setText("Please enter your flight ID:");
 
         searchBtn.setText("Search");
+        searchBtn.setFocusable(false);
         searchBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchBtnActionPerformed(evt);

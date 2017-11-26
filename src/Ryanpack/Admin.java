@@ -1,34 +1,14 @@
 package Ryanpack;
 
-import javax.swing.UIManager;
-import javax.swing.UIManager.LookAndFeelInfo;
-import javax.swing.UnsupportedLookAndFeelException;
-
-public final class Admin extends javax.swing.JFrame {
+public class Admin extends javax.swing.JFrame {
     
     String filePath = "data.txt";
     Main func = new Main();
 
     public Admin() {
-
-        // setting the look and feel to Nimbus
-        try{
-            for(LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()){
-                if("Nimbus".equals(info.getName())){
-                    UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        }catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException e){
-            System.out.println(e);
-        }
-        
-        // default loading of all components
+        func.setTheme();
         initComponents();
-        
-        // add padding to search text field
         func.addPaddingToJTextField(searchFld);
-        
         func.loadData(filePath, table);
         
         // saves data on exit of app

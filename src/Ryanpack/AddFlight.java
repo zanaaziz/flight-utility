@@ -1,5 +1,6 @@
 package Ryanpack;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class AddFlight extends javax.swing.JFrame {
@@ -67,11 +68,11 @@ public class AddFlight extends javax.swing.JFrame {
 
         departureFormatLbl.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         departureFormatLbl.setForeground(java.awt.Color.gray);
-        departureFormatLbl.setText("Example: dd/mm/yyyy hh:mm");
+        departureFormatLbl.setText("Example: DD/MM/YYYY HH:MM");
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         jLabel1.setForeground(java.awt.Color.gray);
-        jLabel1.setText("Example: dd/mm/yyyy hh:mm");
+        jLabel1.setText("Example: DD/MM/YYYY HH:MM");
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         jLabel2.setForeground(java.awt.Color.gray);
@@ -153,11 +154,15 @@ public class AddFlight extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        DefaultTableModel model = (DefaultTableModel)admin.table.getModel();
-        Object[] newFlight = { "F"+func.generateFlightID(), "P"+func.generatePilotID(), fromFld.getText(), toFld.getText(), departureFld.getText(), arrivalFld.getText(), func.calculateFlightDuration(departureFld.getText(), arrivalFld.getText()) };
-        model.addRow(newFlight);
-        this.dispose();
-        func.saveData(admin.filePath, admin.table);
+        if(func.isEmpty(toFld, fromFld, departureFld, arrivalFld) == false){    
+            DefaultTableModel model = (DefaultTableModel)admin.table.getModel();
+            Object[] newFlight = { "F"+func.generateFlightID(), "P"+func.generatePilotID(), fromFld.getText(), toFld.getText(), departureFld.getText(), arrivalFld.getText(), func.calculateFlightDuration(departureFld.getText(), arrivalFld.getText()) };
+            model.addRow(newFlight);
+            this.dispose();
+            func.saveData(admin.filePath, admin.table);
+        }else{
+            JOptionPane.showMessageDialog(null, "One or more fields are missing.\nPlease try again.", "Missing Field(s)", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_addBtnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

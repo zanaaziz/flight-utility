@@ -16,6 +16,8 @@ import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -124,6 +126,30 @@ public class Functions {
         }
         
         return Long.toString(duration);
+    }
+    
+    /* checks if textfields are empty */
+    public boolean isEmpty(JTextField a, JTextField b, JTextField c, JTextField d){
+        if(a.getText().isEmpty() || b.getText().isEmpty() || c.getText().isEmpty() || d.getText().isEmpty()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
+    /* setting the look and feel to Nimbus */
+    public void setTheme(){
+        
+        try{
+            for(UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()){
+                if("Nimbus".equals(info.getName())){
+                    UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        }catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException e){
+            System.out.println(e);
+        }
     }
     
 }
