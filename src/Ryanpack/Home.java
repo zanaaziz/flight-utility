@@ -3,12 +3,12 @@ package Ryanpack;
 import java.awt.Cursor;
 import java.awt.Font;
 import java.awt.font.TextAttribute;
-import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class Home extends javax.swing.JFrame {
@@ -19,7 +19,7 @@ public class Home extends javax.swing.JFrame {
     public Home() {
         initComponents();
         
-        adminUI.addPaddingToJTextField(userIdFld);
+        adminUI.addPaddingToJTextField(searchFld);
     }
 
     /**
@@ -33,7 +33,7 @@ public class Home extends javax.swing.JFrame {
 
         welcomeLbl = new javax.swing.JLabel();
         instructionsLbl = new javax.swing.JLabel();
-        userIdFld = new javax.swing.JTextField();
+        searchFld = new javax.swing.JTextField();
         searchBtn = new javax.swing.JButton();
         adminLbl = new javax.swing.JLabel();
 
@@ -74,7 +74,7 @@ public class Home extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(userIdFld)
+                    .addComponent(searchFld)
                     .addComponent(searchBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -91,7 +91,7 @@ public class Home extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(instructionsLbl)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(userIdFld, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(searchFld, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
@@ -104,37 +104,48 @@ public class Home extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
-        //@reference: https://www.youtube.com/watch?v=vP3lnY-MUu0
-        //Scanner to ask the user for the name of the file.
-        //The file name is will be placed in the flight id text field
-        Scanner scanner = new Scanner(userIdFld.getText());
-        
-        //set to null because we dont know what the file is until the user types it
-        BufferedReader buffRead = null;
-        
-        //variable that stores each line that is read as the programs loops through
-        String line;     
-        
-        //A try catch is used if the programs runs into an error such as the file not being found it will catch the error and print it
-        try{
-            //the buffered reader is called then the filereader is also called to locate the file and read its name
-            //scanner.next to read the next string 
-            buffRead = new BufferedReader(new FileReader("data.txt" + scanner.next()));
+        try {
+            Scanner file = new Scanner(new File("data.txt"));
             
-        } catch (FileNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "This flight number does not exist!");
-        }
-        //Reading of the file begins
-        try{
-            //A while loop is used to read through every line of text using readLine method and to call variables initialised outside of the loop
-            //This will loop as long as the file is not equal to null meaning that when it is not the loop will know that it is at the end of the line
-            while((line=buffRead.readLine()) != null){
-                //JOptionPane is called to display the contents of the file line by line
-                JOptionPane.showMessageDialog(null, ""+line);
+            while(file.hasNextLine()){
+                String line = file.nextLine();
+                
+                if(line.contains(searchFld.getText())){
+                    
+                    String[] flightInfo = line.split("//");
+                    
+                    String[] flightInfoTemplate = {
+                        "Flight ID: ",
+                        "Pilot ID: ",
+                        "From: ",
+                        "To: ",
+                        "Departure Time: ",
+                        "Arrival Time: ",
+                        "Duration (hours): "
+                    };
+                    
+                    StringBuilder output = new StringBuilder();
+                    
+                    for(int i = 0; i < flightInfo.length; i++){
+                        output.append(flightInfoTemplate[i] + "\n" + flightInfo[i] + "\n\n");
+                        
+                    }
+                    
+                    JOptionPane.showMessageDialog(null, output);
+                    break;
+                    
+                }else{
+                    if(!file.hasNextLine()){
+                        JOptionPane.showMessageDialog(null, "Sorry, the flight ID you entered does not exist.");
+                        break;
+                    }
+                }
             }
             
-        } catch (IOException e) {
-            System.out.println(e.getMessage() + " Error reading file");
+            file.close();
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_searchBtnActionPerformed
 
@@ -162,7 +173,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel adminLbl;
     private javax.swing.JLabel instructionsLbl;
     private javax.swing.JButton searchBtn;
-    private javax.swing.JTextField userIdFld;
+    private javax.swing.JTextField searchFld;
     private javax.swing.JLabel welcomeLbl;
     // End of variables declaration//GEN-END:variables
 }
