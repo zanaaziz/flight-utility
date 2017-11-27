@@ -1,107 +1,19 @@
 package Ryanpack;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.BorderFactory;
-import javax.swing.JTextField;
-import javax.swing.UIManager;
-import javax.swing.UIManager.LookAndFeelInfo;
-import javax.swing.UnsupportedLookAndFeelException;
-import javax.swing.table.DefaultTableModel;
-
-public final class Admin extends javax.swing.JFrame {
+public class Admin extends javax.swing.JFrame {
     
-    private String filePath = "data.txt";
-    
-    public void loadData(){
-        File file = new File(filePath);
-
-        // gets the table tableModel
-        DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
-                
-        // clear table
-        tableModel.setRowCount(0);
-        
-        try {
-            FileReader fr = new FileReader(file);
-            BufferedReader br = new BufferedReader(fr);
-                        
-            Object[] lines = br.lines().toArray();
-            
-            for (Object line : lines) {
-                String[] row = line.toString().split("//");
-                tableModel.addRow(row);
-            }
-            
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-    public void saveData(){
-        File file = new File(filePath);
-        
-        try {
-            FileWriter fw = new FileWriter(file);
-            BufferedWriter bw = new BufferedWriter(fw);
-            
-            // rows
-            for(int r = 0; r < table.getRowCount(); r++){
-                // columns
-                for(int c = 0; c < table.getColumnCount(); c++){
-                    bw.flush();
-                    bw.write(table.getValueAt(r, c).toString() + "//");
-                }
-                bw.newLine();
-            }
-            
-            bw.close();
-            fw.close();
-            
-        } catch (IOException ex) {
-            Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-    // a public function that will add padding to a given JTextField.
-    public void addPaddingToJTextField(JTextField textfield){
-        textfield.setBorder(BorderFactory.createCompoundBorder(
-        textfield.getBorder(),
-        BorderFactory.createEmptyBorder(5, 5, 5, 5)));
-    }
+    String filePath = "data.txt";
+    Main func = new Main();
 
     public Admin() {
-
-        // setting the look and feel to Nimbus
-        try{
-            for(LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()){
-                if("Nimbus".equals(info.getName())){
-                    UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        }catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException e){
-            System.out.println(e);
-        }
-        
-        // default loading of all components
+        func.setTheme();
         initComponents();
-        
-        // add padding to search text field
-        addPaddingToJTextField(searchFld);
-        
-        loadData();
+        func.addPaddingToJTextField(searchFld);
+        func.loadData(filePath, table);
         
         // saves data on exit of app
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            saveData();
+            func.saveData(filePath, table);
         }));
     }
 
@@ -124,8 +36,7 @@ public final class Admin extends javax.swing.JFrame {
         homeBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Ryanair - Admin");
-        setPreferredSize(new java.awt.Dimension(1200, 700));
+        setTitle("Admin Panel");
         setResizable(false);
         addWindowFocusListener(new java.awt.event.WindowFocusListener() {
             public void windowGainedFocus(java.awt.event.WindowEvent evt) {
@@ -152,6 +63,7 @@ public final class Admin extends javax.swing.JFrame {
             }
         });
         table.setFocusable(false);
+        table.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         table.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(table);
         if (table.getColumnModel().getColumnCount() > 0) {
@@ -245,20 +157,21 @@ public final class Admin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void refreshBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshBtnActionPerformed
-        loadData();
+        func.loadData(filePath, table);
     }//GEN-LAST:event_refreshBtnActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-       addFlight addFlightUI = new addFlight();
+       AddFlight addFlightUI = new AddFlight();
        addFlightUI.setVisible(true);
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
-        loadData();
+        func.loadData(filePath, table);
     }//GEN-LAST:event_formWindowGainedFocus
 
     private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
-        // TODO add your handling code here:
+        EditFlight editFlightUI = new EditFlight ();
+            editFlightUI.setVisible(true);
     }//GEN-LAST:event_editBtnActionPerformed
 
     private void homeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBtnActionPerformed

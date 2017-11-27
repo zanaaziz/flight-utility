@@ -1,6 +1,6 @@
 package Ryanpack;
 
-public class Ryanair {
+public class Main extends Functions {
 
     public static void main(String[] args) {
         Home homeUI = new Home();

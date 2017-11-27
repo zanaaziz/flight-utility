@@ -1,66 +1,24 @@
 package Ryanpack;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class addFlight extends javax.swing.JFrame {
+public class AddFlight extends javax.swing.JFrame {
     
+    Main func = new Main();
     Admin admin = new Admin();
 
     /**
      * Creates new form CreateFlightGUI
      */
-    public addFlight() {
+    public AddFlight() {
         initComponents();
         
         // add padding to text fields
-        admin.addPaddingToJTextField(fromFld);
-        admin.addPaddingToJTextField(toFld);
-        admin.addPaddingToJTextField(departureFld);
-        admin.addPaddingToJTextField(arrivalFld);
-    }
-    
-    private String generateFlightID(){
-        Random flightNumberGenerator = new Random();
-        int flightID = flightNumberGenerator.nextInt(99999 - 10000 + 1) + 10000;
-        return Integer.toString(flightID);
-    }
-    
-    private String generatePilotID(){
-        Random pilotNumberGenerator = new Random();
-        int pilotID = pilotNumberGenerator.nextInt(999 - 100 + 1) + 100;
-        return Integer.toString(pilotID);
-    }
-    
-    private String calculateFlightDuration(){
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-        
-        Date departure;
-        Date arrival;
-        long duration = 0;
-
-        try {
-            departure = format.parse(departureFld.getText());
-            
-            arrival = format.parse(arrivalFld.getText());
-
-            long difference = arrival.getTime() - departure.getTime();
-            long durationInHours = difference / (60 * 60 * 1000) % 24;
-            long durationInDays = difference / (24 * 60 * 60 * 1000);
-
-            duration = (durationInDays * 24) + durationInHours;
-            
-        } catch (ParseException ex) {
-            Logger.getLogger(addFlight.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        
-        return Long.toString(duration);
+        func.addPaddingToJTextField(fromFld);
+        func.addPaddingToJTextField(toFld);
+        func.addPaddingToJTextField(departureFld);
+        func.addPaddingToJTextField(arrivalFld);
     }
 
     /**
@@ -88,7 +46,7 @@ public class addFlight extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Ryanair - Add Flight");
+        setTitle("Add Flight");
         setResizable(false);
 
         instructionsLbl.setText("Please enter the flight details below:");
@@ -110,19 +68,19 @@ public class addFlight extends javax.swing.JFrame {
 
         departureFormatLbl.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         departureFormatLbl.setForeground(java.awt.Color.gray);
-        departureFormatLbl.setText("dd/mm/yyyy hh:mm");
+        departureFormatLbl.setText("Example: DD/MM/YYYY HH:MM");
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         jLabel1.setForeground(java.awt.Color.gray);
-        jLabel1.setText("dd/mm/yyyy hh:mm");
+        jLabel1.setText("Example: DD/MM/YYYY HH:MM");
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         jLabel2.setForeground(java.awt.Color.gray);
-        jLabel2.setText("city, country");
+        jLabel2.setText("Example: City, Country");
 
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         jLabel3.setForeground(java.awt.Color.gray);
-        jLabel3.setText("city, country");
+        jLabel3.setText("Example: City, Country");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -167,7 +125,7 @@ public class addFlight extends javax.swing.JFrame {
                     .addComponent(fromLbl)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(fromFld, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fromFld, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(toLbl)
@@ -196,27 +154,31 @@ public class addFlight extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        DefaultTableModel model = (DefaultTableModel)admin.table.getModel();
-        Object[] newFlight = { "F"+generateFlightID(), "P"+generatePilotID(), fromFld.getText(), toFld.getText(), departureFld.getText(), arrivalFld.getText(), calculateFlightDuration() };
-        model.addRow(newFlight);
-        this.dispose();
-        admin.saveData();
+        if(func.isEmpty(toFld, fromFld, departureFld, arrivalFld) == false){    
+            DefaultTableModel model = (DefaultTableModel)admin.table.getModel();
+            Object[] newFlight = { "F"+func.generateFlightID(), "P"+func.generatePilotID(), fromFld.getText(), toFld.getText(), departureFld.getText(), arrivalFld.getText(), func.calculateFlightDuration(departureFld.getText(), arrivalFld.getText()) };
+            model.addRow(newFlight);
+            this.dispose();
+            func.saveData(admin.filePath, admin.table);
+        }else{
+            JOptionPane.showMessageDialog(null, "One or more fields are missing.\nPlease try again.", "Missing Field(s)", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_addBtnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
-    private javax.swing.JTextField arrivalFld;
+    public javax.swing.JTextField arrivalFld;
     private javax.swing.JLabel arrivalLbl;
-    private javax.swing.JTextField departureFld;
+    public javax.swing.JTextField departureFld;
     private javax.swing.JLabel departureFormatLbl;
     private javax.swing.JLabel departureLbl;
-    private javax.swing.JTextField fromFld;
+    public javax.swing.JTextField fromFld;
     private javax.swing.JLabel fromLbl;
     private javax.swing.JLabel instructionsLbl;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField toFld;
+    public javax.swing.JTextField toFld;
     private javax.swing.JLabel toLbl;
     // End of variables declaration//GEN-END:variables
 }
