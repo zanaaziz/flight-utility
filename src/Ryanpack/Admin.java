@@ -1,5 +1,11 @@
 package Ryanpack;
 
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 public class Admin extends javax.swing.JFrame {
     
     String filePath = "data.txt";
@@ -94,6 +100,11 @@ public class Admin extends javax.swing.JFrame {
 
         deleteBtn.setText("Delete Flight");
         deleteBtn.setFocusable(false);
+        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBtnActionPerformed(evt);
+            }
+        });
 
         addBtn.setText("Add Flight");
         addBtn.setFocusable(false);
@@ -181,6 +192,39 @@ public class Admin extends javax.swing.JFrame {
         homeUI.setVisible(true);
     }//GEN-LAST:event_homeBtnActionPerformed
 
+    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        
+//        ArrayList<String> tempArray = new ArrayList<>();
+//        try(FileReader fr = new FileReader("data.txt")){
+//                Scanner reader = new Scanner(fr);
+//                String line;
+//                String[] lineArr;
+//                
+//                int count = 0;
+//                count++;
+//                while((line=reader.nextLine())!=null){
+//                    lineArr = line.split("//");
+//                    if(lineArr[count].equals(table.getSelectedRow())){
+//                        tempArray.add(
+//                            lineArr[count] + "//");
+//                    }
+//                }
+//        }catch(Exception ex)
+//        {
+//            JOptionPane.showMessageDialog(null, "Error"+ex);
+//        }
+        try{
+            int  SelectedRowIndex = table.getSelectedRow();
+            model.removeRow(SelectedRowIndex);
+        }catch(Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, "Error "+ex);
+        }
+        
+    }//GEN-LAST:event_deleteBtnActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
     private javax.swing.JButton deleteBtn;
@@ -191,4 +235,8 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JTextField searchFld;
     public javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
+
+    private void FileReader(String datatxt) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

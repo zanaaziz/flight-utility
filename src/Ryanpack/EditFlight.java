@@ -45,11 +45,23 @@ public class EditFlight extends javax.swing.JFrame {
 
         fromLbl.setText("From:");
 
+        fromFld.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fromFldActionPerformed(evt);
+            }
+        });
+
         toLbl.setText("To:");
 
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         jLabel3.setForeground(java.awt.Color.gray);
         jLabel3.setText("Example: City, Country");
+
+        toFld.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                toFldActionPerformed(evt);
+            }
+        });
 
         departureLbl.setText("Departure Time:");
 
@@ -57,11 +69,23 @@ public class EditFlight extends javax.swing.JFrame {
         departureFormatLbl.setForeground(java.awt.Color.gray);
         departureFormatLbl.setText("Example: DD/MM/YYYY HH:MM");
 
+        departureFld.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                departureFldActionPerformed(evt);
+            }
+        });
+
         arrivalLbl.setText("Arrival Time:");
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         jLabel1.setForeground(java.awt.Color.gray);
         jLabel1.setText("Example: DD/MM/YYYY HH:MM");
+
+        arrivalFld.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                arrivalFldActionPerformed(evt);
+            }
+        });
 
         editBtn.setText("Edit Flight");
         editBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -144,6 +168,23 @@ public class EditFlight extends javax.swing.JFrame {
     private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
         
     }//GEN-LAST:event_editBtnActionPerformed
+
+    private void fromFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fromFldActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_fromFldActionPerformed
+
+    private void toFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toFldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_toFldActionPerformed
+
+    private void departureFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_departureFldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_departureFldActionPerformed
+
+    private void arrivalFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arrivalFldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_arrivalFldActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField arrivalFld;
