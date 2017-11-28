@@ -1,5 +1,7 @@
 package Ryanpack;
 
+import javax.swing.JTextField;
+
 public class EditFlight extends javax.swing.JFrame {
     
     Main func = new Main();
@@ -167,6 +169,7 @@ public class EditFlight extends javax.swing.JFrame {
 
     private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
         
+
     }//GEN-LAST:event_editBtnActionPerformed
 
     private void fromFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fromFldActionPerformed
@@ -187,19 +190,19 @@ public class EditFlight extends javax.swing.JFrame {
     }//GEN-LAST:event_arrivalFldActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField arrivalFld;
+    public javax.swing.JTextField arrivalFld;
     private javax.swing.JLabel arrivalLbl;
-    private javax.swing.JTextField departureFld;
+    public javax.swing.JTextField departureFld;
     private javax.swing.JLabel departureFormatLbl;
     private javax.swing.JLabel departureLbl;
     private javax.swing.JButton editBtn;
     private javax.swing.JLabel editinstructionsLbl;
-    private javax.swing.JTextField fromFld;
+    public javax.swing.JTextField fromFld;
     private javax.swing.JLabel fromLbl;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField toFld;
+    public javax.swing.JTextField toFld;
     private javax.swing.JLabel toLbl;
     // End of variables declaration//GEN-END:variables
 }
