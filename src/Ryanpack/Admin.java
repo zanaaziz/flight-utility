@@ -1,11 +1,24 @@
 package Ryanpack;
 
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.Scanner;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+
+//@reference https://www.youtube.com/watch?v=Uq4v-bIDAIk
 public class Admin extends javax.swing.JFrame {
     
     String filePath = "data.txt";
     Main func = new Main();
+    
 
     public Admin() {
+        
+        
         func.setTheme();
         initComponents();
         func.addPaddingToJTextField(searchFld);
@@ -15,6 +28,14 @@ public class Admin extends javax.swing.JFrame {
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             func.saveData(filePath, table);
         }));
+    }
+    
+    private void filter(String query)
+    {
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>();
+        table.setRowSorter(tr);
+        
+        tr.setRowFilter(RowFilter.regexFilter(query));
     }
 
     /**
@@ -76,6 +97,12 @@ public class Admin extends javax.swing.JFrame {
             table.getColumnModel().getColumn(6).setResizable(false);
         }
 
+        searchFld.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchFldActionPerformed(evt);
+            }
+        });
+
         refreshBtn.setText("Refresh Table");
         refreshBtn.setFocusable(false);
         refreshBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -94,6 +121,11 @@ public class Admin extends javax.swing.JFrame {
 
         deleteBtn.setText("Delete Flight");
         deleteBtn.setFocusable(false);
+        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBtnActionPerformed(evt);
+            }
+        });
 
         addBtn.setText("Add Flight");
         addBtn.setFocusable(false);
@@ -171,7 +203,19 @@ public class Admin extends javax.swing.JFrame {
 
     private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
         EditFlight editFlightUI = new EditFlight ();
-            editFlightUI.setVisible(true);
+        editFlightUI.setVisible(true);
+        
+        int  SelectedRowIndex = table.getSelectedRow();
+        JTextField[] textFieldNames = {editFlightUI.fromFld, editFlightUI.toFld, editFlightUI.departureFld, editFlightUI.arrivalFld};
+        
+        for(int i = 2; i <= 5; i++){
+            for(int j = 0; j < textFieldNames.length; j++){
+                String colData = table.getModel().getValueAt(SelectedRowIndex, i).toString();
+                textFieldNames[j].setText(colData);
+                System.out.println(textFieldNames[j].toString());
+                i++;
+            }
+        }
     }//GEN-LAST:event_editBtnActionPerformed
 
     private void homeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBtnActionPerformed
@@ -180,6 +224,56 @@ public class Admin extends javax.swing.JFrame {
         Home homeUI = new Home();
         homeUI.setVisible(true);
     }//GEN-LAST:event_homeBtnActionPerformed
+
+    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
+        // TODO add your handling code here:
+        //@reference https://stackoverflow.com/questions/8689122/joptionpane-yes-no-options-confirm-dialog-box-issue-java
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        
+//        ArrayList<String> tempArray = new ArrayList<>();
+//        try(FileReader fr = new FileReader("data.txt")){
+//                Scanner reader = new Scanner(fr);
+//                String line;
+//                String[] lineArr;
+//                
+//                int count = 0;
+//                count++;
+//                while((line=reader.nextLine())!lllllll=null){
+//                    lineArr = line.split("//");
+//                    if(lineArr[count].equals(table.getSelectedRow())){
+//                        tempArray.add(
+//                            lineArr[count] + "//");
+//                    }
+//                }
+//        }catch(Exception ex)
+//        {
+//            JOptionPane.showMessageDialog(null, "Error"+ex);
+//        }
+   
+        try{
+            int dialogButton = JOptionPane.YES_NO_OPTION;
+            int dialogResult = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this flight?", "Delete Flights", dialogButton);
+
+            if(dialogResult == 0) {
+                int  SelectedRowIndex = table.getSelectedRow();
+                model.removeRow(SelectedRowIndex);
+                func.saveData(filePath, table);
+              System.out.println("Yes option");
+            } else {
+              System.out.println("No Option");
+            }   
+            }catch(Exception ex)
+            {
+                JOptionPane.showMessageDialog(null, "Error "+ex);
+            }
+        
+    }//GEN-LAST:event_deleteBtnActionPerformed
+
+    private void searchFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFldActionPerformed
+        // TODO add your handling code here:
+        String query = searchFld.getText().toUpperCase();
+        filter(query);
+    }//GEN-LAST:event_searchFldActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
@@ -191,4 +285,8 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JTextField searchFld;
     public javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
+
+    private void FileReader(String datatxt) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

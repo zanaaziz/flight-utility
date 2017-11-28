@@ -1,5 +1,7 @@
 package Ryanpack;
 
+import javax.swing.JTextField;
+
 public class EditFlight extends javax.swing.JFrame {
     
     Main func = new Main();
@@ -45,11 +47,23 @@ public class EditFlight extends javax.swing.JFrame {
 
         fromLbl.setText("From:");
 
+        fromFld.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fromFldActionPerformed(evt);
+            }
+        });
+
         toLbl.setText("To:");
 
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         jLabel3.setForeground(java.awt.Color.gray);
         jLabel3.setText("Example: City, Country");
+
+        toFld.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                toFldActionPerformed(evt);
+            }
+        });
 
         departureLbl.setText("Departure Time:");
 
@@ -57,11 +71,23 @@ public class EditFlight extends javax.swing.JFrame {
         departureFormatLbl.setForeground(java.awt.Color.gray);
         departureFormatLbl.setText("Example: DD/MM/YYYY HH:MM");
 
+        departureFld.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                departureFldActionPerformed(evt);
+            }
+        });
+
         arrivalLbl.setText("Arrival Time:");
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
         jLabel1.setForeground(java.awt.Color.gray);
         jLabel1.setText("Example: DD/MM/YYYY HH:MM");
+
+        arrivalFld.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                arrivalFldActionPerformed(evt);
+            }
+        });
 
         editBtn.setText("Edit Flight");
         editBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -143,22 +169,40 @@ public class EditFlight extends javax.swing.JFrame {
 
     private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
         
+
     }//GEN-LAST:event_editBtnActionPerformed
 
+    private void fromFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fromFldActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_fromFldActionPerformed
+
+    private void toFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toFldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_toFldActionPerformed
+
+    private void departureFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_departureFldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_departureFldActionPerformed
+
+    private void arrivalFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arrivalFldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_arrivalFldActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField arrivalFld;
+    public javax.swing.JTextField arrivalFld;
     private javax.swing.JLabel arrivalLbl;
-    private javax.swing.JTextField departureFld;
+    public javax.swing.JTextField departureFld;
     private javax.swing.JLabel departureFormatLbl;
     private javax.swing.JLabel departureLbl;
     private javax.swing.JButton editBtn;
     private javax.swing.JLabel editinstructionsLbl;
-    private javax.swing.JTextField fromFld;
+    public javax.swing.JTextField fromFld;
     private javax.swing.JLabel fromLbl;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField toFld;
+    public javax.swing.JTextField toFld;
     private javax.swing.JLabel toLbl;
     // End of variables declaration//GEN-END:variables
 }

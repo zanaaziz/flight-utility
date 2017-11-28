@@ -88,6 +88,9 @@ public class Functions {
         }
     }
     
+    /*Delete data from files*/
+    
+    
     /* generates a number between the range of 10000 to 99999 */
     public String generateFlightID(){
         Random flightNumberGenerator = new Random();
