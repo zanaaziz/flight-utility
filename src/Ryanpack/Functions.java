@@ -90,7 +90,19 @@ public class Functions {
         }
     }
     
-    /*Delete data from files*/
+    /* Add flight */
+    public void AddFlight(String dataFile, JTable jtable, JTextField from, JTextField to, JTextField dep, JTextField arr){
+        if(isEmpty(from, to, dep, arr) == false){   
+            DefaultTableModel model = (DefaultTableModel)jtable.getModel();
+            Object[] newFlight = { "F"+generateFlightID(), "P"+generatePilotID(), from.getText(), to.getText(), dep.getText(), arr.getText(), calculateFlightDuration(dep.getText(), arr.getText()) };
+            model.addRow(newFlight);
+            saveData(dataFile, jtable);
+        }else{
+            JOptionPane.showMessageDialog(null, "One or more fields are missing.\nPlease try again.", "Missing Field(s)", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    /*Delete flight */
     public void DeleteFile(String dataFile, JTable jTable){
         //@reference https://stackoverflow.com/questions/8689122/joptionpane-yes-no-options-confirm-dialog-box-issue-java
         DefaultTableModel model = (DefaultTableModel) jTable.getModel();
@@ -107,6 +119,10 @@ public class Functions {
             JOptionPane.showMessageDialog(null, "Error "+ex);
         }
     }
+    
+    /*Update*/
+    public void iFle(String dataFile, JTable jTable){}
+    
     
     /* generates a number between the range of 10000 to 99999 */
     public String generateFlightID(){

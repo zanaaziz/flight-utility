@@ -173,8 +173,7 @@ public class EditFlight extends javax.swing.JFrame {
 
     private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
         
-        BufferedReader buffRead;
-        BufferedWriter buffWrite;
+        
         
         try{
             

@@ -1,7 +1,5 @@
 package Ryanpack;
 
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 
 public class AddFlight extends javax.swing.JFrame {
     
@@ -154,15 +152,8 @@ public class AddFlight extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        if(func.isEmpty(toFld, fromFld, departureFld, arrivalFld) == false){    
-            DefaultTableModel model = (DefaultTableModel)admin.table.getModel();
-            Object[] newFlight = { "F"+func.generateFlightID(), "P"+func.generatePilotID(), fromFld.getText(), toFld.getText(), departureFld.getText(), arrivalFld.getText(), func.calculateFlightDuration(departureFld.getText(), arrivalFld.getText()) };
-            model.addRow(newFlight);
-            this.dispose();
-            func.saveData(admin.filePath, admin.table);
-        }else{
-            JOptionPane.showMessageDialog(null, "One or more fields are missing.\nPlease try again.", "Missing Field(s)", JOptionPane.ERROR_MESSAGE);
-        }
+        func.AddFlight(admin.filePath, admin.table, fromFld, toFld, departureFld, arrivalFld);
+        this.dispose();
     }//GEN-LAST:event_addBtnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
