@@ -1,5 +1,6 @@
 package Ryanpack;
 
+import java.awt.HeadlessException;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -91,7 +92,7 @@ public class Functions {
     
     /*Delete data from files*/
     public void DeleteFile(String dataFile, JTable jTable){
-                //@reference https://stackoverflow.com/questions/8689122/joptionpane-yes-no-options-confirm-dialog-box-issue-java
+        //@reference https://stackoverflow.com/questions/8689122/joptionpane-yes-no-options-confirm-dialog-box-issue-java
         DefaultTableModel model = (DefaultTableModel) jTable.getModel();
      
         try{
@@ -102,11 +103,10 @@ public class Functions {
                 int  SelectedRowIndex = jTable.getSelectedRow();
                 model.removeRow(SelectedRowIndex);
                 saveData(dataFile, jTable);
-            } 
-            }catch(Exception ex)
-            {
-                JOptionPane.showMessageDialog(null, "Error "+ex);
             }
+        }catch(HeadlessException ex){
+            JOptionPane.showMessageDialog(null, "Error "+ex);
+        }
     }
     
     /* generates a number between the range of 10000 to 99999 */

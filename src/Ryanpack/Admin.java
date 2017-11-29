@@ -28,8 +28,7 @@ public class Admin extends javax.swing.JFrame {
         }));
     }
     
-    private void filter(String query)
-    {
+    private void filter(String query){
         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>();
         table.setRowSorter(tr);
         
@@ -224,14 +223,11 @@ public class Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_homeBtnActionPerformed
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
-        // TODO add your handling code here:
         func.DeleteFile(filePath, table);
     }//GEN-LAST:event_deleteBtnActionPerformed
 
     private void searchFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFldActionPerformed
-        String query = searchFld.getText().toUpperCase();
-        filter(query);
-      
+        
     }//GEN-LAST:event_searchFldActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
