@@ -2,6 +2,11 @@ package Ryanpack;
 
 
 import javax.swing.JTextField;
+import javax.swing.RowFilter;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 //@reference https://www.youtube.com/watch?v=Uq4v-bIDAIk
 public class Admin extends javax.swing.JFrame {
@@ -14,7 +19,39 @@ public class Admin extends javax.swing.JFrame {
         initComponents();
         func.addPaddingToJTextField(searchFld);
         func.loadData(filePath, table);
+         
+        TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(table.getModel());
+        table.setRowSorter(rowSorter);
         
+        searchFld.getDocument().addDocumentListener(new DocumentListener(){
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                String text = searchFld.getText();
+                if(text.trim().length() == 0) {
+                    rowSorter.setRowFilter(null);
+                }else{
+                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+                }
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                String text = searchFld.getText();
+
+                if (text.trim().length() == 0) {
+                    rowSorter.setRowFilter(null);
+                } else {
+                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+                }
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            
+        });
         // saves data on exit of app
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             func.saveData(filePath, table);
