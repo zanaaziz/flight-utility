@@ -20,6 +20,7 @@ public class Admin extends javax.swing.JFrame {
         func.addPaddingToJTextField(searchFld);
         func.loadData(filePath, table);
          
+        // table filtering
         TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(table.getModel());
         table.setRowSorter(rowSorter);
         
@@ -49,9 +50,8 @@ public class Admin extends javax.swing.JFrame {
             public void changedUpdate(DocumentEvent e) {
                 throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
-
-            
         });
+        
         // saves data on exit of app
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             func.saveData(filePath, table);
