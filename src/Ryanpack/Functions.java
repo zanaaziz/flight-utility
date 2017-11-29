@@ -14,7 +14,10 @@ import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -25,10 +28,7 @@ import javax.swing.table.DefaultTableModel;
  *
  */
 public class Functions {
-    
-    Admin admin = new Admin();
-    AddFlight addFlight = new AddFlight();
-    
+        
     /* add padding to a given textfield */
     public void addPaddingToJTextField(JTextField textfield){
         textfield.setBorder(BorderFactory.createCompoundBorder(
@@ -37,11 +37,11 @@ public class Functions {
     }
     
     /* load table data from file */
-    public void loadData(){
-        File file = new File(admin.filePath);
+    public void loadData(String dataFile, JTable jtable){
+        File file = new File(dataFile);
 
         // gets the table tableModel
-        DefaultTableModel tableModel = (DefaultTableModel)admin.table.getModel();
+        DefaultTableModel tableModel = (DefaultTableModel)jtable.getModel();
                 
         // clear table
         tableModel.setRowCount(0);
@@ -63,19 +63,19 @@ public class Functions {
     }
     
     /* save table data to file */
-    public void saveData(){
-        File file = new File(admin.filePath);
+    public void saveData(String dataFile, JTable jtable){
+        File file = new File(dataFile);
         
         try {
             FileWriter fw = new FileWriter(file);
             BufferedWriter bw = new BufferedWriter(fw);
             
             // rows
-            for(int r = 0; r < admin.table.getRowCount(); r++){
+            for(int r = 0; r < jtable.getRowCount(); r++){
                 // columns
-                for(int c = 0; c < admin.table.getColumnCount(); c++){
+                for(int c = 0; c < jtable.getColumnCount(); c++){
                     bw.flush();
-                    bw.write(admin.table.getValueAt(r, c).toString() + "//");
+                    bw.write(jtable.getValueAt(r, c).toString() + "//");
                 }
                 bw.newLine();
             }
@@ -87,6 +87,9 @@ public class Functions {
             Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    /*Delete data from files*/
+    
     
     /* generates a number between the range of 10000 to 99999 */
     public String generateFlightID(){
@@ -103,7 +106,7 @@ public class Functions {
     }
     
     /* calculates the flight duration in hours between the departure date and arrival date */
-    public String calculateFlightDuration(){
+    public String calculateFlightDuration(String dep, String arr){
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         
         Date departure;
@@ -111,9 +114,9 @@ public class Functions {
         long duration = 0;
 
         try {
-            departure = format.parse(addFlight.departureFld.getText());
+            departure = format.parse(dep);
             
-            arrival = format.parse(addFlight.arrivalFld.getText());
+            arrival = format.parse(arr);
 
             long difference = arrival.getTime() - departure.getTime();
             long durationInHours = difference / (60 * 60 * 1000) % 24;
@@ -126,6 +129,30 @@ public class Functions {
         }
         
         return Long.toString(duration);
+    }
+    
+    /* checks if textfields are empty */
+    public boolean isEmpty(JTextField a, JTextField b, JTextField c, JTextField d){
+        if(a.getText().isEmpty() || b.getText().isEmpty() || c.getText().isEmpty() || d.getText().isEmpty()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
+    /* setting the look and feel to Nimbus */
+    public void setTheme(){
+        
+        try{
+            for(UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()){
+                if("Nimbus".equals(info.getName())){
+                    UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        }catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException e){
+            System.out.println(e);
+        }
     }
     
 }
