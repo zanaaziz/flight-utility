@@ -154,7 +154,12 @@ public class AddFlight extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
+<<<<<<< HEAD
         
+=======
+        func.AddFlight(admin.filePath, admin.table, fromFld, toFld, departureFld, arrivalFld);
+        this.dispose();
+>>>>>>> 598f39b74ad87bd49e0266d5560442821608357e
     }//GEN-LAST:event_addBtnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
