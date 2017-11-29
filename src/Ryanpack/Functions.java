@@ -127,7 +127,6 @@ public class Functions {
         } catch (ParseException ex) {
             Logger.getLogger(AddFlight.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
         return Long.toString(duration);
     }
     
@@ -142,7 +141,6 @@ public class Functions {
     
     /* setting the look and feel to Nimbus */
     public void setTheme(){
-        
         try{
             for(UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()){
                 if("Nimbus".equals(info.getName())){
@@ -154,5 +152,4 @@ public class Functions {
             System.out.println(e);
         }
     }
-    
 }
