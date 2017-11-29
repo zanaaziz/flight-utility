@@ -1,0 +1,7 @@
+<<<<<<< HEAD
+=======
+F32002//P819//Moscow, Russia//Paris, France//27/11/2017 14:45//28/11/2017 12:30//21//
+F21948//P916//Tiberias, Israel//Singapore, Singapore//26/11/2017 11:00//26/11/2017 18:00//7//
+F76910//P302//Kiev, Ukraine//Berlin, Germany//27/11/2017 13:00//27/11/2017 14:20//1//
+F49976//P800//Jakarta, Indonesia//Lagos, Nigeria//28/11/2017 12:00//29/11/2017 02:00//14//
+>>>>>>> 41b8ae093bb6c163a9482c8afcb24542fd01f9f0
