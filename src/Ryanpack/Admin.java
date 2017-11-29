@@ -1,10 +1,11 @@
 package Ryanpack;
 
 
-import javax.swing.JOptionPane;
+import java.awt.event.KeyEvent;
 import javax.swing.JTextField;
 import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 //@reference https://www.youtube.com/watch?v=Uq4v-bIDAIk
@@ -97,6 +98,11 @@ public class Admin extends javax.swing.JFrame {
         searchFld.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchFldActionPerformed(evt);
+            }
+        });
+        searchFld.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                searchFldKeyReleased(evt);
             }
         });
 
@@ -229,6 +235,20 @@ public class Admin extends javax.swing.JFrame {
     private void searchFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFldActionPerformed
         
     }//GEN-LAST:event_searchFldActionPerformed
+
+    private void searchFldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFldKeyReleased
+        table.setAutoCreateRowSorter(true);
+        TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(table.getModel());
+        
+        if(evt.getKeyChar() == KeyEvent.VK_ENTER){
+            if (searchFld.getText().trim().length() == 0) {
+                rowSorter.setRowFilter(null);
+            }else{
+                rowSorter.setRowFilter(RowFilter.regexFilter(searchFld.getText()));
+            }
+        }
+        
+    }//GEN-LAST:event_searchFldKeyReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
