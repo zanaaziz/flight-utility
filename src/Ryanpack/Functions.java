@@ -14,6 +14,7 @@ import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
@@ -89,7 +90,24 @@ public class Functions {
     }
     
     /*Delete data from files*/
-    
+    public void DeleteFile(String dataFile, JTable jTable){
+                //@reference https://stackoverflow.com/questions/8689122/joptionpane-yes-no-options-confirm-dialog-box-issue-java
+        DefaultTableModel model = (DefaultTableModel) jTable.getModel();
+     
+        try{
+            int buttons = JOptionPane.YES_NO_OPTION;
+            int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this flight?", "Delete Flights", buttons);
+
+            if(result == 0) {
+                int  SelectedRowIndex = jTable.getSelectedRow();
+                model.removeRow(SelectedRowIndex);
+                saveData(dataFile, jTable);
+            } 
+            }catch(Exception ex)
+            {
+                JOptionPane.showMessageDialog(null, "Error "+ex);
+            }
+    }
     
     /* generates a number between the range of 10000 to 99999 */
     public String generateFlightID(){
