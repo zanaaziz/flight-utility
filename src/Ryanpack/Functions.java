@@ -103,26 +103,24 @@ public class Functions {
     }
     
     /*Delete flight */
-    public void DeleteFile(String dataFile, JTable jTable){
+    public String DeleteFile(String dataFile, JTable jtable){
         //@reference https://stackoverflow.com/questions/8689122/joptionpane-yes-no-options-confirm-dialog-box-issue-java
-        DefaultTableModel model = (DefaultTableModel) jTable.getModel();
+        
+        String deletedFlightID = "";
      
         try{
             int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this flight?", "Delete Flights", JOptionPane.YES_NO_OPTION);
 
             if(result == 0) {
-                int  SelectedRowIndex = jTable.getSelectedRow();
-                model.removeRow(SelectedRowIndex);
-                saveData(dataFile, jTable);
+                DefaultTableModel model = (DefaultTableModel) jtable.getModel();
+                deletedFlightID = model.getValueAt(jtable.getSelectedRow(), 0).toString();
             }
         }catch(HeadlessException ex){
             JOptionPane.showMessageDialog(null, "Error "+ex);
         }
+        
+        return deletedFlightID;
     }
-    
-    /*Update*/
-    public void iFle(String dataFile, JTable jTable){}
-    
     
     /* generates a number between the range of 10000 to 99999 */
     public String generateFlightID(){

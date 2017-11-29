@@ -5,6 +5,7 @@ import javax.swing.JTextField;
 import javax.swing.RowFilter;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -240,7 +241,23 @@ public class Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_homeBtnActionPerformed
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
-        func.DeleteFile(filePath, table);
+        String id = func.DeleteFile(filePath, table);
+        System.out.println(id);
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        model.setRowCount(0);
+        
+        /*
+        DefaultTableModel model = (DefaultTableModel)table.getModel();
+        for (int i = 0; i < model.getRowCount(); i++) {
+            if (((String)model.getValueAt(i, 0)).equals(id)) {
+                model.removeRow(i);
+                break;
+            }
+        }
+        */
+        
+        func.loadData(filePath, table);
+        searchFld.setText("");
     }//GEN-LAST:event_deleteBtnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
