@@ -96,8 +96,7 @@ public class Functions {
         DefaultTableModel model = (DefaultTableModel) jTable.getModel();
      
         try{
-            int buttons = JOptionPane.YES_NO_OPTION;
-            int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this flight?", "Delete Flights", buttons);
+            int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this flight?", "Delete Flights", JOptionPane.YES_NO_OPTION);
 
             if(result == 0) {
                 int  SelectedRowIndex = jTable.getSelectedRow();
