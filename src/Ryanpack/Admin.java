@@ -1,8 +1,6 @@
 package Ryanpack;
 
-import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.Scanner;
+
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.RowFilter;
@@ -231,9 +229,9 @@ public class Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteBtnActionPerformed
 
     private void searchFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFldActionPerformed
-        // TODO add your handling code here:
         String query = searchFld.getText().toUpperCase();
         filter(query);
+      
     }//GEN-LAST:event_searchFldActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
