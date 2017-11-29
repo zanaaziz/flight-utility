@@ -1,5 +1,6 @@
 package Ryanpack;
 
+import java.awt.HeadlessException;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -91,23 +92,25 @@ public class Functions {
     
     /*Delete data from files*/
     public void DeleteFile(String dataFile, JTable jTable){
-                //@reference https://stackoverflow.com/questions/8689122/joptionpane-yes-no-options-confirm-dialog-box-issue-java
+        //@reference https://stackoverflow.com/questions/8689122/joptionpane-yes-no-options-confirm-dialog-box-issue-java
         DefaultTableModel model = (DefaultTableModel) jTable.getModel();
      
         try{
-            int buttons = JOptionPane.YES_NO_OPTION;
-            int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this flight?", "Delete Flights", buttons);
+            int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this flight?", "Delete Flights", JOptionPane.YES_NO_OPTION);
 
             if(result == 0) {
                 int  SelectedRowIndex = jTable.getSelectedRow();
                 model.removeRow(SelectedRowIndex);
                 saveData(dataFile, jTable);
-            } 
-            }catch(Exception ex)
-            {
-                JOptionPane.showMessageDialog(null, "Error "+ex);
             }
+        }catch(HeadlessException ex){
+            JOptionPane.showMessageDialog(null, "Error "+ex);
+        }
     }
+    
+    /*Update*/
+    public void iFle(String dataFile, JTable jTable){}
+    
     
     /* generates a number between the range of 10000 to 99999 */
     public String generateFlightID(){
