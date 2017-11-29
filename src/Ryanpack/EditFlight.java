@@ -1,6 +1,10 @@
 package Ryanpack;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 public class EditFlight extends javax.swing.JFrame {
     
@@ -169,14 +173,19 @@ public class EditFlight extends javax.swing.JFrame {
 
     private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
         
-
+        BufferedReader buffRead;
+        BufferedWriter buffWrite;
+        
+        try{
+            
+        }catch(Exception e){
+            System.out.println("Error"+e);
+        }
     }//GEN-LAST:event_editBtnActionPerformed
 
     private void fromFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fromFldActionPerformed
         // TODO add your handling code here:
-        
     }//GEN-LAST:event_fromFldActionPerformed
-
     private void toFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toFldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_toFldActionPerformed

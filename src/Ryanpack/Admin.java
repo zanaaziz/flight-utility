@@ -28,8 +28,7 @@ public class Admin extends javax.swing.JFrame {
         }));
     }
     
-    private void filter(String query)
-    {
+    private void filter(String query){
         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>();
         table.setRowSorter(tr);
         
@@ -224,53 +223,11 @@ public class Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_homeBtnActionPerformed
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
-        // TODO add your handling code here:
-        //@reference https://stackoverflow.com/questions/8689122/joptionpane-yes-no-options-confirm-dialog-box-issue-java
-        DefaultTableModel model = (DefaultTableModel) table.getModel();
-        
-//        ArrayList<String> tempArray = new ArrayList<>();
-//        try(FileReader fr = new FileReader("data.txt")){
-//                Scanner reader = new Scanner(fr);
-//                String line;
-//                String[] lineArr;
-//                
-//                int count = 0;
-//                count++;
-//                while((line=reader.nextLine())!lllllll=null){
-//                    lineArr = line.split("//");
-//                    if(lineArr[count].equals(table.getSelectedRow())){
-//                        tempArray.add(
-//                            lineArr[count] + "//");
-//                    }
-//                }
-//        }catch(Exception ex)
-//        {
-//            JOptionPane.showMessageDialog(null, "Error"+ex);
-//        }
-   
-        try{
-            int dialogButton = JOptionPane.YES_NO_OPTION;
-            int dialogResult = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this flight?", "Delete Flights", dialogButton);
-
-            if(dialogResult == 0) {
-                int  SelectedRowIndex = table.getSelectedRow();
-                model.removeRow(SelectedRowIndex);
-                func.saveData(filePath, table);
-              System.out.println("Yes option");
-            } else {
-              System.out.println("No Option");
-            }   
-            }catch(Exception ex)
-            {
-                JOptionPane.showMessageDialog(null, "Error "+ex);
-            }
-        
+        func.DeleteFile(filePath, table);
     }//GEN-LAST:event_deleteBtnActionPerformed
 
     private void searchFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFldActionPerformed
-        String query = searchFld.getText().toUpperCase();
-        filter(query);
-      
+        
     }//GEN-LAST:event_searchFldActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
