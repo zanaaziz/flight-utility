@@ -1,9 +1,10 @@
 package Ryanpack;
 
 
-import java.awt.event.KeyEvent;
 import javax.swing.JTextField;
 import javax.swing.RowFilter;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
@@ -12,28 +13,50 @@ import javax.swing.table.TableRowSorter;
 public class Admin extends javax.swing.JFrame {
     
     String filePath = "data.txt";
-    Main func = new Main();
-    
+    Main func = new Main();    
 
     public Admin() {
-        
-        
         func.setTheme();
         initComponents();
         func.addPaddingToJTextField(searchFld);
         func.loadData(filePath, table);
+         
+        // table filtering
+        TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(table.getModel());
+        table.setRowSorter(rowSorter);
+        
+        searchFld.getDocument().addDocumentListener(new DocumentListener(){
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                String text = searchFld.getText();
+                if(text.trim().length() == 0) {
+                    rowSorter.setRowFilter(null);
+                }else{
+                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+                }
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                String text = searchFld.getText();
+
+                if (text.trim().length() == 0) {
+                    rowSorter.setRowFilter(null);
+                } else {
+                    rowSorter.setRowFilter(RowFilter.regexFilter("(?i)" + text));
+                }
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        });
         
         // saves data on exit of app
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             func.saveData(filePath, table);
         }));
-    }
-    
-    private void filter(String query){
-        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>();
-        table.setRowSorter(tr);
-        
-        tr.setRowFilter(RowFilter.regexFilter(query));
     }
 
     /**
@@ -94,17 +117,6 @@ public class Admin extends javax.swing.JFrame {
             table.getColumnModel().getColumn(5).setResizable(false);
             table.getColumnModel().getColumn(6).setResizable(false);
         }
-
-        searchFld.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchFldActionPerformed(evt);
-            }
-        });
-        searchFld.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                searchFldKeyReleased(evt);
-            }
-        });
 
         refreshBtn.setText("Refresh Table");
         refreshBtn.setFocusable(false);
@@ -229,26 +241,24 @@ public class Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_homeBtnActionPerformed
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
-        func.DeleteFile(filePath, table);
-    }//GEN-LAST:event_deleteBtnActionPerformed
-
-    private void searchFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFldActionPerformed
+        String id = func.DeleteFile(filePath, table);
+        System.out.println(id);
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        model.setRowCount(0);
         
-    }//GEN-LAST:event_searchFldActionPerformed
-
-    private void searchFldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchFldKeyReleased
-        table.setAutoCreateRowSorter(true);
-        TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(table.getModel());
-        
-        if(evt.getKeyChar() == KeyEvent.VK_ENTER){
-            if (searchFld.getText().trim().length() == 0) {
-                rowSorter.setRowFilter(null);
-            }else{
-                rowSorter.setRowFilter(RowFilter.regexFilter(searchFld.getText()));
+        /*
+        DefaultTableModel model = (DefaultTableModel)table.getModel();
+        for (int i = 0; i < model.getRowCount(); i++) {
+            if (((String)model.getValueAt(i, 0)).equals(id)) {
+                model.removeRow(i);
+                break;
             }
         }
+        */
         
-    }//GEN-LAST:event_searchFldKeyReleased
+        func.loadData(filePath, table);
+        searchFld.setText("");
+    }//GEN-LAST:event_deleteBtnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
@@ -260,8 +270,4 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JTextField searchFld;
     public javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
-
-    private void FileReader(String datatxt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }
