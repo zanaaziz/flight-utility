@@ -128,6 +128,11 @@ public class EditFlight extends javax.swing.JFrame {
                 arrivalTimeFldFocusGained(evt);
             }
         });
+        arrivalTimeFld.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                arrivalTimeFldActionPerformed(evt);
+            }
+        });
 
         arrivalLbl1.setText("Arrival Time:");
 
@@ -280,6 +285,10 @@ public class EditFlight extends javax.swing.JFrame {
     private void arrivalTimeFldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_arrivalTimeFldFocusGained
         arrivalTimeFld.selectAll();
     }//GEN-LAST:event_arrivalTimeFldFocusGained
+
+    private void arrivalTimeFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arrivalTimeFldActionPerformed
+        editBtnActionPerformed(evt);
+    }//GEN-LAST:event_arrivalTimeFldActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTextField arrivalDateFld;

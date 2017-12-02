@@ -164,7 +164,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="editBtn">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Edit Flight"/>
+        <Property name="text" type="java.lang.String" value="Edit"/>
         <Property name="focusable" type="boolean" value="false"/>
       </Properties>
       <Events>
@@ -173,7 +173,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="deleteBtn">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Delete Flight"/>
+        <Property name="text" type="java.lang.String" value="Delete"/>
         <Property name="focusable" type="boolean" value="false"/>
       </Properties>
       <Events>
@@ -182,7 +182,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="addBtn">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Add Flight"/>
+        <Property name="text" type="java.lang.String" value="Add"/>
         <Property name="focusable" type="boolean" value="false"/>
       </Properties>
       <Events>
@@ -191,7 +191,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="homeBtn">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Back To Home"/>
+        <Property name="text" type="java.lang.String" value="Back"/>
         <Property name="focusable" type="boolean" value="false"/>
       </Properties>
       <Events>

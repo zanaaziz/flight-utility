@@ -52,6 +52,11 @@ public class Home extends javax.swing.JFrame {
                 searchFldFocusGained(evt);
             }
         });
+        searchFld.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchFldActionPerformed(evt);
+            }
+        });
 
         searchBtn.setText("Search");
         searchBtn.setFocusable(false);
@@ -75,7 +80,7 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        exampleLbl.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
+        exampleLbl.setFont(new java.awt.Font("Lucida Grande", 2, 11)); // NOI18N
         exampleLbl.setForeground(java.awt.Color.gray);
         exampleLbl.setText("Example: F12345");
 
@@ -209,6 +214,10 @@ public class Home extends javax.swing.JFrame {
     private void searchFldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchFldFocusGained
         searchFld.selectAll();
     }//GEN-LAST:event_searchFldFocusGained
+
+    private void searchFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFldActionPerformed
+        searchBtnActionPerformed(evt);
+    }//GEN-LAST:event_searchFldActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel adminLbl;

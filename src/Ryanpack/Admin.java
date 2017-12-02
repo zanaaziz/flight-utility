@@ -125,7 +125,7 @@ public class Admin extends javax.swing.JFrame {
             }
         });
 
-        editBtn.setText("Edit Flight");
+        editBtn.setText("Edit");
         editBtn.setFocusable(false);
         editBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,7 +133,7 @@ public class Admin extends javax.swing.JFrame {
             }
         });
 
-        deleteBtn.setText("Delete Flight");
+        deleteBtn.setText("Delete");
         deleteBtn.setFocusable(false);
         deleteBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,7 +141,7 @@ public class Admin extends javax.swing.JFrame {
             }
         });
 
-        addBtn.setText("Add Flight");
+        addBtn.setText("Add");
         addBtn.setFocusable(false);
         addBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,7 +149,7 @@ public class Admin extends javax.swing.JFrame {
             }
         });
 
-        homeBtn.setText("Back To Home");
+        homeBtn.setText("Back");
         homeBtn.setFocusable(false);
         homeBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

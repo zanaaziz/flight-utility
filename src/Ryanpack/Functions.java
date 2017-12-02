@@ -98,7 +98,7 @@ public class Functions {
         
     /*Delete flight */
     public void DeleteFlight(String dataFile, DefaultTableModel model, JTable table, JTextField srch){
-        int decision = JOptionPane.showConfirmDialog (null, "Are you certain that you would like to delete this flight record?","Warning", JOptionPane.YES_NO_OPTION);
+        int decision = JOptionPane.showConfirmDialog (null, "Are you certain in deleting this flight record?", "Confirm Deletion", JOptionPane.YES_NO_OPTION);
         
         if(decision == JOptionPane.YES_OPTION){
             srch.setText("");

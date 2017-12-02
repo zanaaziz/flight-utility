@@ -104,6 +104,12 @@ public class AddFlight extends javax.swing.JFrame {
 
         departureLbl1.setText("Departure Time:");
 
+        arrivalTimeFld.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                arrivalTimeFldActionPerformed(evt);
+            }
+        });
+
         arrivalLbl1.setText("Arrival Time:");
 
         departureFormatLbl2.setFont(new java.awt.Font("Lucida Grande", 2, 11)); // NOI18N
@@ -223,6 +229,10 @@ public class AddFlight extends javax.swing.JFrame {
     private void departureTimeFldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_departureTimeFldFocusLost
         arrivalTimeFld.setText(departureTimeFld.getText());
     }//GEN-LAST:event_departureTimeFldFocusLost
+
+    private void arrivalTimeFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arrivalTimeFldActionPerformed
+        addBtnActionPerformed(evt);
+    }//GEN-LAST:event_arrivalTimeFldActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
