@@ -29,7 +29,6 @@ import javax.swing.table.DefaultTableModel;
  *
  */
 public class Functions {
-    
     /* add padding to a given textfield */
     public void addPaddingToJTextField(JTextField textfield){
         textfield.setBorder(BorderFactory.createCompoundBorder(
