@@ -47,6 +47,12 @@ public class Home extends javax.swing.JFrame {
 
         instructionsLbl.setText("Please enter your flight ID:");
 
+        searchFld.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                searchFldFocusGained(evt);
+            }
+        });
+
         searchBtn.setText("Search");
         searchBtn.setFocusable(false);
         searchBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -128,7 +134,7 @@ public class Home extends javax.swing.JFrame {
                     String line = file.nextLine();
 
                     // check if the current line contains the flight ID entered...
-                    if(line.contains(searchFld.getText())){
+                    if(line.contains(searchFld.getText().toUpperCase())){
 
                         // the string is split by '//' into an array
                         String[] flightInfo = line.split("//");
@@ -137,8 +143,8 @@ public class Home extends javax.swing.JFrame {
                         String[] flightInfoTemplate = {
                             "Flight ID: ",
                             "Pilot ID: ",
-                            "From: ",
-                            "To: ",
+                            "Departing From: ",
+                            "Arriving To: ",
                             "Departure Time: ",
                             "Arrival Time: ",
                             "Duration (hours): "
@@ -199,6 +205,10 @@ public class Home extends javax.swing.JFrame {
         Admin adminUI = new Admin();
         adminUI.setVisible(true);
     }//GEN-LAST:event_adminLblMouseReleased
+
+    private void searchFldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_searchFldFocusGained
+        searchFld.selectAll();
+    }//GEN-LAST:event_searchFldFocusGained
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel adminLbl;
