@@ -1,5 +1,7 @@
 package Ryanpack;
 
+import javax.swing.JOptionPane;
+
 
 public class AddFlight extends javax.swing.JFrame {
     
@@ -15,8 +17,10 @@ public class AddFlight extends javax.swing.JFrame {
         // add padding to text fields
         func.addPaddingToJTextField(fromFld);
         func.addPaddingToJTextField(toFld);
-        func.addPaddingToJTextField(departureFld);
-        func.addPaddingToJTextField(arrivalFld);
+        func.addPaddingToJTextField(departureDateFld);
+        func.addPaddingToJTextField(departureTimeFld);
+        func.addPaddingToJTextField(arrivalDateFld);
+        func.addPaddingToJTextField(arrivalTimeFld);
     }
 
     /**
@@ -34,14 +38,20 @@ public class AddFlight extends javax.swing.JFrame {
         toLbl = new javax.swing.JLabel();
         toFld = new javax.swing.JTextField();
         departureLbl = new javax.swing.JLabel();
-        departureFld = new javax.swing.JTextField();
+        departureDateFld = new javax.swing.JTextField();
         arrivalLbl = new javax.swing.JLabel();
-        arrivalFld = new javax.swing.JTextField();
+        arrivalDateFld = new javax.swing.JTextField();
         addBtn = new javax.swing.JButton();
         departureFormatLbl = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        departureTimeFld = new javax.swing.JTextField();
+        departureFormatLbl1 = new javax.swing.JLabel();
+        departureLbl1 = new javax.swing.JLabel();
+        arrivalTimeFld = new javax.swing.JTextField();
+        arrivalLbl1 = new javax.swing.JLabel();
+        departureFormatLbl2 = new javax.swing.JLabel();
+        departureFormatLbl3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Add Flight");
@@ -53,9 +63,15 @@ public class AddFlight extends javax.swing.JFrame {
 
         toLbl.setText("To:");
 
-        departureLbl.setText("Departure Time:");
+        departureLbl.setText("Departure Date:");
 
-        arrivalLbl.setText("Arrival Time:");
+        departureDateFld.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                departureDateFldFocusLost(evt);
+            }
+        });
+
+        arrivalLbl.setText("Arrival Date:");
 
         addBtn.setText("Add Flight");
         addBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -64,21 +80,39 @@ public class AddFlight extends javax.swing.JFrame {
             }
         });
 
-        departureFormatLbl.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
+        departureFormatLbl.setFont(new java.awt.Font("Lucida Grande", 2, 11)); // NOI18N
         departureFormatLbl.setForeground(java.awt.Color.gray);
-        departureFormatLbl.setText("Example: DD/MM/YYYY HH:MM");
+        departureFormatLbl.setText("DD/MM/YYYY");
 
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
-        jLabel1.setForeground(java.awt.Color.gray);
-        jLabel1.setText("Example: DD/MM/YYYY HH:MM");
-
-        jLabel2.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Lucida Grande", 2, 11)); // NOI18N
         jLabel2.setForeground(java.awt.Color.gray);
         jLabel2.setText("Example: City, Country");
 
-        jLabel3.setFont(new java.awt.Font("Lucida Grande", 2, 13)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Lucida Grande", 2, 11)); // NOI18N
         jLabel3.setForeground(java.awt.Color.gray);
         jLabel3.setText("Example: City, Country");
+
+        departureTimeFld.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                departureTimeFldFocusLost(evt);
+            }
+        });
+
+        departureFormatLbl1.setFont(new java.awt.Font("Lucida Grande", 2, 11)); // NOI18N
+        departureFormatLbl1.setForeground(java.awt.Color.gray);
+        departureFormatLbl1.setText("HH:MM");
+
+        departureLbl1.setText("Departure Time:");
+
+        arrivalLbl1.setText("Arrival Time:");
+
+        departureFormatLbl2.setFont(new java.awt.Font("Lucida Grande", 2, 11)); // NOI18N
+        departureFormatLbl2.setForeground(java.awt.Color.gray);
+        departureFormatLbl2.setText("DD/MM/YYYY");
+
+        departureFormatLbl3.setFont(new java.awt.Font("Lucida Grande", 2, 11)); // NOI18N
+        departureFormatLbl3.setForeground(java.awt.Color.gray);
+        departureFormatLbl3.setText("HH:MM");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -93,24 +127,38 @@ public class AddFlight extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2))
                     .addComponent(toFld)
-                    .addComponent(departureFld)
-                    .addComponent(arrivalFld)
                     .addComponent(addBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(instructionsLbl)
-                        .addGap(0, 160, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(toLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel3))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(departureLbl)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(departureFormatLbl))
+                        .addGap(11, 11, 11)
+                        .addComponent(departureFormatLbl)
+                        .addGap(18, 18, 18)
+                        .addComponent(departureLbl1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                        .addComponent(departureFormatLbl1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(arrivalDateFld, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(departureDateFld, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(departureTimeFld, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                            .addComponent(arrivalTimeFld)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(instructionsLbl)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(arrivalLbl)
+                        .addGap(32, 32, 32)
+                        .addComponent(departureFormatLbl2)
+                        .addGap(18, 18, 18)
+                        .addComponent(arrivalLbl1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1)))
+                        .addComponent(departureFormatLbl3)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -133,15 +181,23 @@ public class AddFlight extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(departureLbl)
-                    .addComponent(departureFormatLbl))
+                    .addComponent(departureFormatLbl)
+                    .addComponent(departureFormatLbl1)
+                    .addComponent(departureLbl1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(departureFld, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(departureDateFld, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(departureTimeFld, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(arrivalLbl)
-                    .addComponent(jLabel1))
+                    .addComponent(arrivalLbl1)
+                    .addComponent(departureFormatLbl2)
+                    .addComponent(departureFormatLbl3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(arrivalFld, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(arrivalDateFld, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(arrivalTimeFld, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(addBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -152,21 +208,39 @@ public class AddFlight extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        func.AddFlight(admin.filePath, admin.table, fromFld, toFld, departureFld, arrivalFld);
-        this.dispose();
+        if(fromFld.getText().isEmpty() || toFld.getText().isEmpty() || departureDateFld.getText().isEmpty() || departureTimeFld.getText().isEmpty() || arrivalDateFld.getText().isEmpty() || arrivalTimeFld.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "One or more fields are missing.\nPlease try again.", "Missing Field(s)", JOptionPane.ERROR_MESSAGE);
+        }else{
+            func.AddFlight(admin.filePath, admin.table, fromFld.getText(), toFld.getText(), departureDateFld.getText() + " " + departureTimeFld.getText(), arrivalDateFld.getText() + " " + arrivalTimeFld.getText());
+            this.dispose();
+        }
     }//GEN-LAST:event_addBtnActionPerformed
+
+    private void departureDateFldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_departureDateFldFocusLost
+        arrivalDateFld.setText(departureDateFld.getText());
+    }//GEN-LAST:event_departureDateFldFocusLost
+
+    private void departureTimeFldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_departureTimeFldFocusLost
+        arrivalTimeFld.setText(departureTimeFld.getText());
+    }//GEN-LAST:event_departureTimeFldFocusLost
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
-    public javax.swing.JTextField arrivalFld;
+    public javax.swing.JTextField arrivalDateFld;
     private javax.swing.JLabel arrivalLbl;
-    public javax.swing.JTextField departureFld;
+    private javax.swing.JLabel arrivalLbl1;
+    public javax.swing.JTextField arrivalTimeFld;
+    public javax.swing.JTextField departureDateFld;
     private javax.swing.JLabel departureFormatLbl;
+    private javax.swing.JLabel departureFormatLbl1;
+    private javax.swing.JLabel departureFormatLbl2;
+    private javax.swing.JLabel departureFormatLbl3;
     private javax.swing.JLabel departureLbl;
+    private javax.swing.JLabel departureLbl1;
+    public javax.swing.JTextField departureTimeFld;
     public javax.swing.JTextField fromFld;
     private javax.swing.JLabel fromLbl;
     private javax.swing.JLabel instructionsLbl;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     public javax.swing.JTextField toFld;

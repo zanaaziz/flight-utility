@@ -231,8 +231,14 @@ public class Admin extends javax.swing.JFrame {
             // setting the textfields in the edit flight window to what's in the selected row
             editFlightUI.fromFld.setText(table.getValueAt(table.getSelectedRow(), 2).toString());
             editFlightUI.toFld.setText(table.getValueAt(table.getSelectedRow(), 3).toString());
-            editFlightUI.departureFld.setText(table.getValueAt(table.getSelectedRow(), 4).toString());
-            editFlightUI.arrivalFld.setText(table.getValueAt(table.getSelectedRow(), 5).toString());
+            
+            String[] dep = table.getValueAt(table.getSelectedRow(), 4).toString().split(" ");
+            editFlightUI.departureDateFld.setText(dep[0]);
+            editFlightUI.departureTimeFld.setText(dep[1]);
+            
+            String[] arr = table.getValueAt(table.getSelectedRow(), 5).toString().split(" ");
+            editFlightUI.arrivalDateFld.setText(arr[0]);
+            editFlightUI.arrivalTimeFld.setText(arr[1]);
 
             editFlightUI.setVisible(true);
         }

@@ -29,7 +29,7 @@ import javax.swing.table.DefaultTableModel;
  *
  */
 public class Functions {
-        
+    
     /* add padding to a given textfield */
     public void addPaddingToJTextField(JTextField textfield){
         textfield.setBorder(BorderFactory.createCompoundBorder(
@@ -90,15 +90,11 @@ public class Functions {
     }
     
     /* Add flight */
-    public void AddFlight(String dataFile, JTable table, JTextField from, JTextField to, JTextField dep, JTextField arr){
-        if(isEmpty(from, to, dep, arr) == false){   
-            DefaultTableModel model = (DefaultTableModel)table.getModel();
-            Object[] newFlight = { "F"+generateFlightID(), "P"+generatePilotID(), from.getText(), to.getText(), dep.getText(), arr.getText(), calculateFlightDuration(dep.getText(), arr.getText()) };
-            model.addRow(newFlight);
-            saveData(dataFile, table);
-        }else{
-            JOptionPane.showMessageDialog(null, "One or more fields are missing.\nPlease try again.", "Missing Field(s)", JOptionPane.ERROR_MESSAGE);
-        }
+    public void AddFlight(String dataFile, JTable table, String from, String to, String dep, String arr){
+        DefaultTableModel model = (DefaultTableModel)table.getModel();
+        Object[] newFlight = { "F"+generateFlightID(), "P"+generatePilotID(), from, to, dep, arr, calculateFlightDuration(dep, arr) };
+        model.addRow(newFlight);
+        saveData(dataFile, table);
     }
         
     /*Delete flight */
@@ -149,15 +145,6 @@ public class Functions {
             Logger.getLogger(AddFlight.class.getName()).log(Level.SEVERE, null, ex);
         }
         return Long.toString(duration);
-    }
-    
-    /* checks if textfields are empty */
-    public boolean isEmpty(JTextField a, JTextField b, JTextField c, JTextField d){
-        if(a.getText().isEmpty() || b.getText().isEmpty() || c.getText().isEmpty() || d.getText().isEmpty()){
-            return true;
-        }else{
-            return false;
-        }
     }
     
     /* setting the look and feel to Nimbus */
