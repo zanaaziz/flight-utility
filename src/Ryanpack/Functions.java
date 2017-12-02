@@ -1,6 +1,5 @@
 package Ryanpack;
 
-import java.awt.HeadlessException;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -39,11 +38,11 @@ public class Functions {
     }
     
     /* load table data from file */
-    public void loadData(String dataFile, JTable jtable){
+    public void loadData(String dataFile, JTable table){
         File file = new File(dataFile);
 
         // gets the table tableModel
-        DefaultTableModel tableModel = (DefaultTableModel)jtable.getModel();
+        DefaultTableModel tableModel = (DefaultTableModel)table.getModel();
                 
         // clear table
         tableModel.setRowCount(0);
@@ -65,7 +64,7 @@ public class Functions {
     }
     
     /* save table data to file */
-    public void saveData(String dataFile, JTable jtable){
+    public void saveData(String dataFile, JTable table){
         File file = new File(dataFile);
         
         try {
@@ -73,11 +72,11 @@ public class Functions {
             BufferedWriter bw = new BufferedWriter(fw);
             
             // rows
-            for(int r = 0; r < jtable.getRowCount(); r++){
+            for(int r = 0; r < table.getRowCount(); r++){
                 // columns
-                for(int c = 0; c < jtable.getColumnCount(); c++){
+                for(int c = 0; c < table.getColumnCount(); c++){
                     bw.flush();
-                    bw.write(jtable.getValueAt(r, c).toString() + "//");
+                    bw.write(table.getValueAt(r, c).toString() + "//");
                 }
                 bw.newLine();
             }
@@ -91,35 +90,26 @@ public class Functions {
     }
     
     /* Add flight */
-    public void AddFlight(String dataFile, JTable jtable, JTextField from, JTextField to, JTextField dep, JTextField arr){
+    public void AddFlight(String dataFile, JTable table, JTextField from, JTextField to, JTextField dep, JTextField arr){
         if(isEmpty(from, to, dep, arr) == false){   
-            DefaultTableModel model = (DefaultTableModel)jtable.getModel();
+            DefaultTableModel model = (DefaultTableModel)table.getModel();
             Object[] newFlight = { "F"+generateFlightID(), "P"+generatePilotID(), from.getText(), to.getText(), dep.getText(), arr.getText(), calculateFlightDuration(dep.getText(), arr.getText()) };
             model.addRow(newFlight);
-            saveData(dataFile, jtable);
+            saveData(dataFile, table);
         }else{
             JOptionPane.showMessageDialog(null, "One or more fields are missing.\nPlease try again.", "Missing Field(s)", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
+        
     /*Delete flight */
-    public String DeleteFile(String dataFile, JTable jtable){
-        //@reference https://stackoverflow.com/questions/8689122/joptionpane-yes-no-options-confirm-dialog-box-issue-java
+    public void DeleteFlight(String dataFile, DefaultTableModel model, JTable table, JTextField srch){
+        int decision = JOptionPane.showConfirmDialog (null, "Are you certain that you would like to delete this flight record?","Warning", JOptionPane.YES_NO_OPTION);
         
-        String deletedFlightID = "";
-     
-        try{
-            int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this flight?", "Delete Flights", JOptionPane.YES_NO_OPTION);
-
-            if(result == 0) {
-                DefaultTableModel model = (DefaultTableModel) jtable.getModel();
-                deletedFlightID = model.getValueAt(jtable.getSelectedRow(), 0).toString();
-            }
-        }catch(HeadlessException ex){
-            JOptionPane.showMessageDialog(null, "Error "+ex);
+        if(decision == JOptionPane.YES_OPTION){
+            srch.setText("");
+            model.removeRow(table.getSelectedRow());
+            saveData(dataFile, table);
         }
-        
-        return deletedFlightID;
     }
     
     /* generates a number between the range of 10000 to 99999 */
