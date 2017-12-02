@@ -1,7 +1,5 @@
 package Ryanpack;
 
-
-import javax.swing.JTextField;
 import javax.swing.RowFilter;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -12,13 +10,17 @@ import javax.swing.table.TableRowSorter;
 //@reference https://www.youtube.com/watch?v=Uq4v-bIDAIk
 public class Admin extends javax.swing.JFrame {
     
+    DefaultTableModel model;
+    Main func = new Main();
     String filePath = "data.txt";
-    Main func = new Main();    
 
     public Admin() {
         func.setTheme();
+        
         initComponents();
+        
         func.addPaddingToJTextField(searchFld);
+        
         func.loadData(filePath, table);
          
         // table filtering
@@ -52,11 +54,8 @@ public class Admin extends javax.swing.JFrame {
                 throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
         });
-        
-        // saves data on exit of app
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            func.saveData(filePath, table);
-        }));
+
+        model = (DefaultTableModel)table.getModel();
     }
 
     /**
@@ -118,7 +117,7 @@ public class Admin extends javax.swing.JFrame {
             table.getColumnModel().getColumn(6).setResizable(false);
         }
 
-        refreshBtn.setText("Refresh Table");
+        refreshBtn.setText("Refresh");
         refreshBtn.setFocusable(false);
         refreshBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -205,6 +204,7 @@ public class Admin extends javax.swing.JFrame {
 
     private void refreshBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshBtnActionPerformed
         func.loadData(filePath, table);
+        searchFld.setText("");
     }//GEN-LAST:event_refreshBtnActionPerformed
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
@@ -215,24 +215,29 @@ public class Admin extends javax.swing.JFrame {
     private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
         func.loadData(filePath, table);
     }//GEN-LAST:event_formWindowGainedFocus
-
+    
     private void editBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editBtnActionPerformed
-        EditFlight editFlightUI = new EditFlight ();
-        editFlightUI.setVisible(true);
-        
-        int  SelectedRowIndex = table.getSelectedRow();
-        JTextField[] textFieldNames = {editFlightUI.fromFld, editFlightUI.toFld, editFlightUI.departureFld, editFlightUI.arrivalFld};
-        
-        for(int i = 2; i <= 5; i++){
-            for(int j = 0; j < textFieldNames.length; j++){
-                String colData = table.getModel().getValueAt(SelectedRowIndex, i).toString();
-                textFieldNames[j].setText(colData);
-                System.out.println(textFieldNames[j].toString());
-                i++;
-            }
+        // if table.getSelectedRow() returns a value of -1, that means no row is selected
+        if(table.getSelectedRow() != -1){
+            searchFld.setText("");
+            
+            EditFlight editFlightUI = new EditFlight();
+            
+            // assigning the public variables in EditFlight
+            editFlightUI.rowIndex = table.getSelectedRow();
+            editFlightUI.flightID = table.getValueAt(table.getSelectedRow(), 0).toString();
+            editFlightUI.pilotID = table.getValueAt(table.getSelectedRow(), 1).toString();
+
+            // setting the textfields in the edit flight window to what's in the selected row
+            editFlightUI.fromFld.setText(table.getValueAt(table.getSelectedRow(), 2).toString());
+            editFlightUI.toFld.setText(table.getValueAt(table.getSelectedRow(), 3).toString());
+            editFlightUI.departureFld.setText(table.getValueAt(table.getSelectedRow(), 4).toString());
+            editFlightUI.arrivalFld.setText(table.getValueAt(table.getSelectedRow(), 5).toString());
+
+            editFlightUI.setVisible(true);
         }
     }//GEN-LAST:event_editBtnActionPerformed
-
+    
     private void homeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeBtnActionPerformed
         this.dispose();
         
@@ -241,23 +246,10 @@ public class Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_homeBtnActionPerformed
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
-        String id = func.DeleteFile(filePath, table);
-        System.out.println(id);
-        DefaultTableModel model = (DefaultTableModel) table.getModel();
-        model.setRowCount(0);
-        
-        /*
-        DefaultTableModel model = (DefaultTableModel)table.getModel();
-        for (int i = 0; i < model.getRowCount(); i++) {
-            if (((String)model.getValueAt(i, 0)).equals(id)) {
-                model.removeRow(i);
-                break;
-            }
+        // again, check if a row is selected
+        if(table.getSelectedRow() != -1){
+            func.DeleteFlight(filePath, model, table, searchFld);
         }
-        */
-        
-        func.loadData(filePath, table);
-        searchFld.setText("");
     }//GEN-LAST:event_deleteBtnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -267,7 +259,7 @@ public class Admin extends javax.swing.JFrame {
     private javax.swing.JButton homeBtn;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton refreshBtn;
-    private javax.swing.JTextField searchFld;
+    public javax.swing.JTextField searchFld;
     public javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
 }
