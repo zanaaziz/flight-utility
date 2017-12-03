@@ -1,4 +1,4 @@
-# Ryanair Flight Utility Java Project
+# Ryanair Flight Utility
 The "Ryanair Flight Utility" is a college Java project that is built to somewhat mimick a flight recording system. Using this app, you can add, delete, edit, and filter through a "database" of flight records.
 
 ---
@@ -10,7 +10,7 @@ Of course, it would also save and write to that file using the same format.
 
 ---
 
-# Flight ID Search Window
+# Flight ID Search
 This is the first window to greet the user. From here, they can search for a flight using their uniquely generated five digit flight ID that starts with the letter 'F'. Upon search, the program will scan through the data file and if a match is found, display all information back to the user. However, if no match is found, it'll notify the user accordingly.
 
 <img src="https://github.com/zanadaniel/ryanair-project/blob/master/images/Flight%20ID%20Searching.png" width="600">
@@ -41,7 +41,7 @@ Just like creating a new flight, you can edit an existing flight record by simpl
 # Deleting a Flight Record
 To delete a flight record, simply select the row and click the 'Delete' option. You will be asked to confirm your decision and if the response is yes, the record will be deleted and the table will update.
 
-<img src="https://github.com/zanadaniel/ryanair-project/blob/master/images/Confirm%20Deletion.png" width="600">
+<img src="https://github.com/zanadaniel/ryanair-project/blob/master/images/Confirm%20Deletion.png" width="300">
 
 ---
 
