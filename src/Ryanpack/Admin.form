@@ -31,16 +31,17 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" pref="1032" max="32767" attributes="0"/>
+                  <Component id="scrollPane" pref="1032" max="32767" attributes="0"/>
                   <Component id="searchFld" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="refreshBtn" alignment="1" min="-2" pref="150" max="-2" attributes="0"/>
-                  <Component id="homeBtn" alignment="1" min="-2" pref="150" max="-2" attributes="0"/>
-                  <Component id="addBtn" alignment="1" min="-2" pref="150" max="-2" attributes="0"/>
-                  <Component id="deleteBtn" alignment="1" min="-2" pref="150" max="-2" attributes="0"/>
-                  <Component id="editBtn" alignment="1" min="-2" pref="150" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Component id="refreshBtn" alignment="1" pref="150" max="32767" attributes="0"/>
+                  <Component id="homeBtn" alignment="1" pref="150" max="32767" attributes="0"/>
+                  <Component id="addBtn" alignment="1" pref="150" max="32767" attributes="0"/>
+                  <Component id="deleteBtn" alignment="1" pref="150" max="32767" attributes="0"/>
+                  <Component id="editBtn" alignment="1" pref="150" max="32767" attributes="0"/>
+                  <Component id="Logo" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -52,7 +53,8 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="Logo" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="homeBtn" min="-2" pref="50" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="refreshBtn" min="-2" pref="50" max="-2" attributes="0"/>
@@ -64,7 +66,7 @@
                       <Component id="editBtn" min="-2" pref="50" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Component id="jScrollPane1" pref="632" max="32767" attributes="0"/>
+                      <Component id="scrollPane" pref="632" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="searchFld" min="-2" pref="50" max="-2" attributes="0"/>
                   </Group>
@@ -75,7 +77,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+    <Container class="javax.swing.JScrollPane" name="scrollPane">
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
       </AuxValues>
@@ -197,6 +199,14 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="homeBtnActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="Logo">
+      <Properties>
+        <Property name="horizontalAlignment" type="int" value="0"/>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Ryanpack/Logo.png"/>
+        </Property>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
