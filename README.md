@@ -27,4 +27,4 @@ The admin panel is where the power of the program really is. Here, you can manip
 # Creating a New Flight Record
 Creating a new flight record is really easy. Click the 'Add' button and a window will appear where you can fill in the new flight record details such as where is the flight from and to where, departure and arrival dates, and the times. Also, the program will then instantly calculate the flight duration using the given dates and times.
 
-<img src="https://github.com/zanadaniel/ryanair-project/blob/master/images/Add%20Flight.png" width="600">
+<img src="https://github.com/zanadaniel/ryanair-project/blob/master/images/Add%20Flight.png" width="400">
