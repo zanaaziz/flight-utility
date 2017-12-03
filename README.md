@@ -1,5 +1,5 @@
-# Ryanair Utility Tool Java Project
-The "Ryanair Utility Tool" is a college Java project that is built to somewhat mimick a flight recording system. Using this app, you can add, delete, edit, and filter through a "database" of flight records.
+# Ryanair Flight Utility Java Project
+The "Ryanair Flight Utility" is a college Java project that is built to somewhat mimick a flight recording system. Using this app, you can add, delete, edit, and filter through a "database" of flight records.
 
 ---
 
