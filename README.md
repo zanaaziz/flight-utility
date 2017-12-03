@@ -17,3 +17,15 @@ This is the first window to greet the user. From here, they can search for a fli
 <img align="left" src="https://github.com/zanadaniel/ryanair-project/blob/master/images/Flight%20ID%20Searching.png" width="600">
 <img align="right" src="https://github.com/zanadaniel/ryanair-project/blob/master/images/Flight%20ID%20Search%20Result.png" width="200">
 </p>
+
+---
+
+# Admin Panel
+The admin panel is where the power of the program really is. Here, you can manipulate, create, delete, and sort through the flight records dynamically. The UI is aimed to emphasize efficiency and effectiveness. It's important that a tool such as this is more on the functional side rather than the pretty side.
+
+<img src="https://github.com/zanadaniel/ryanair-project/blob/master/images/Admin%20Panel.png" width="600">
+
+## Creating a New Flight Record
+Creating a new flight record is really easy. Click the 'Add' button and a window will appear where you can fill in the new flight record details such as where is the flight from and to where, departure and arrival dates, and the times. Also, the program will then instantly calculate the flight duration using the given dates and times.
+
+<img src="https://github.com/zanadaniel/ryanair-project/blob/master/images/Add%20Flight.png" width="600">
