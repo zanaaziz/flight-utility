@@ -11,3 +11,21 @@ F56992//P545//Tokyo, Japan//Hong Kong, Hong Kong//29/01/2018 17:00//29/01/2018 2
 F80813//P878//Beijing, China//Tokyo, Japan//19/12/2017 12:00//19/12/2017 16:00//4//
 F23425//P429//Barcelona, Spain//Venice, Italy//29/12/2018 06:00//29/12/2018 08:00//2//
 F37536//P272//New York, USA//Toronto, Canada//02/02/2018 17:00//02/02/2018 18:00//1//
+F88881//P506//Keflavik, Iceland//Stockholm, Sweden//23/12/2017 10:45//23/12/2017 13:45//3//
+F90342//P823//Prague, Czech Republic//Cardif, Wales//06/01/2018 09:15//06/01/2018 12:00//2//
+F27282//P830//Doha, Qatar//Geneva, Switzerland//19/12/2018 15:30//19/12/2018 23:15//7//
+F61472//P460//Amsterdam, Netherlands//Paris, France//27/12/2018 11:00//27/12/2018 12:00//1//
+F73608//P690//Zurich, Switzerland//Chicago, USA//01/03/2018 18:30//02/03/2018 07:00//12//
+F75307//P410//Birmingham, England//Bordeaux, France//12/01/2018 11:30//12/01/2018 22:30//11//
+F20775//P784//San Francisco, USA//Brussels, Belgium//17/12/2017 14:25//18/12/2017 05:15//14//
+F48365//P168//Turin, Italy//Brussels, Belgium//06/01/2018 14:00//06/01/2018 16:30//2//
+F98183//P631//Istambul, Turkey//Amman, Jordan//03/02/2018 04:15//03/02/2018 06:30//2//
+F70849//P902//Frankfurt, Germany//Algiers, Algeria//14/04/2018 08:45//14/04/2018 12:15//3//
+F20250//P122//Milan, Italy//London, England//12/02/2018 20:10//12/02/2018 22:30//2//
+F90415//P430//Minneapolis, USA//Richmond, Canada//26/12/2018 12:15//26/12/2018 17:15//5//
+F76451//P572//Chennai, India//Colombo, Sri Lanka//13/03/2018 21:30//13/03/2018 22:45//1//
+F25899//P372//Karachi, Pakistan//Doha, Qatar//21/02/2018 22:45//22/02/2018 01:45//3//
+F20984//P961//Krakow, Poland//Tahoua, Niger//04/01/2018 11:30//04/01/2018 18:00//6//
+F97778//P748//Kingston, Jamaica//Braga, Portugal//13/03/2018 23:30//14/03/2018 11:00//11//
+F38504//P153//Southport, Australia//Minsk, Belarus//24/01/2018 07:30//25/01/2018 06:30//23//
+F24864//P730//South Andros, Bahamas//Baler, Philippines//12/03/2018 22:20//13/03/2018 21:30//23//

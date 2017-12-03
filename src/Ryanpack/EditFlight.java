@@ -55,7 +55,7 @@ public class EditFlight extends javax.swing.JFrame {
         departureFormatLbl3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Edit Flight");
+        setTitle("Edit Flight Record");
         setResizable(false);
 
         editinstructionsLbl.setText("Please enter the new flight details:");

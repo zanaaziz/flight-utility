@@ -54,7 +54,7 @@ public class AddFlight extends javax.swing.JFrame {
         departureFormatLbl3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Add Flight");
+        setTitle("New Flight Record");
         setResizable(false);
 
         instructionsLbl.setText("Please enter the flight details below:");
@@ -91,12 +91,6 @@ public class AddFlight extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 2, 11)); // NOI18N
         jLabel3.setForeground(java.awt.Color.gray);
         jLabel3.setText("Example: City, Country");
-
-        departureTimeFld.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                departureTimeFldFocusLost(evt);
-            }
-        });
 
         departureFormatLbl1.setFont(new java.awt.Font("Lucida Grande", 2, 11)); // NOI18N
         departureFormatLbl1.setForeground(java.awt.Color.gray);
@@ -225,10 +219,6 @@ public class AddFlight extends javax.swing.JFrame {
     private void departureDateFldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_departureDateFldFocusLost
         arrivalDateFld.setText(departureDateFld.getText());
     }//GEN-LAST:event_departureDateFldFocusLost
-
-    private void departureTimeFldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_departureTimeFldFocusLost
-        arrivalTimeFld.setText(departureTimeFld.getText());
-    }//GEN-LAST:event_departureTimeFldFocusLost
 
     private void arrivalTimeFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arrivalTimeFldActionPerformed
         addBtnActionPerformed(evt);
