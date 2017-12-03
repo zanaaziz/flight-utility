@@ -6,4 +6,4 @@ Upon launch, the app will search for a 'data.txt' file which would contain all t
 
 Of course, it would also save and write to that file using the same format.
 
-![Image of Data.txt File](https://github.com/zanadaniel/ryanair-project/blob/master/images/Data%20File.png "data.txt")
+<img src="https://github.com/zanadaniel/ryanair-project/blob/master/images/Data%20File.png" width="300">
