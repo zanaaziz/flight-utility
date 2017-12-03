@@ -15,7 +15,6 @@ public class Home extends javax.swing.JFrame {
     
     Main func = new Main();
     
-    //@reference https://www.youtube.com/watch?v=2nk4rZgqdu0
     public Home() {
         func.setTheme();
         initComponents();
@@ -144,7 +143,7 @@ public class Home extends javax.swing.JFrame {
                         // the string is split by '//' into an array
                         String[] flightInfo = line.split("//");
 
-                        // a template array for the final output message
+                        // a template for the final output message
                         String[] flightInfoTemplate = {
                             "Flight ID: ",
                             "Pilot ID: ",
@@ -179,7 +178,8 @@ public class Home extends javax.swing.JFrame {
                 
                 // closing the scanner file object
                 file.close();
-
+                
+            // standard error handling
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -191,6 +191,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_searchBtnActionPerformed
 
     private void adminLblMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminLblMouseEntered
+        // @https://stackoverflow.com/questions/15892844/underlined-jlabel
         Font font = adminLbl.getFont();
         Map attributes = font.getAttributes();
         attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
@@ -199,6 +200,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_adminLblMouseEntered
 
     private void adminLblMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adminLblMouseExited
+        // @https://stackoverflow.com/questions/15892844/underlined-jlabel
         Font font = adminLbl.getFont();
         Map attributes = font.getAttributes();
         attributes.put(TextAttribute.UNDERLINE, -1);
@@ -216,6 +218,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_searchFldFocusGained
 
     private void searchFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFldActionPerformed
+        // if the enter key is pressed, it'll fire the button event
         searchBtnActionPerformed(evt);
     }//GEN-LAST:event_searchFldActionPerformed
 

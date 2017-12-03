@@ -12,7 +12,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
-//@reference https://www.youtube.com/watch?v=Uq4v-bIDAIk
 public class Admin extends javax.swing.JFrame {
     
     DefaultTableModel model;
@@ -28,6 +27,7 @@ public class Admin extends javax.swing.JFrame {
         
         func.loadData(filePath, table);
          
+        // @https://stackoverflow.com/questions/22066387/how-to-search-an-element-in-a-jtable-java
         // table filtering
         TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(table.getModel());
         table.setRowSorter(rowSorter);
@@ -265,6 +265,7 @@ public class Admin extends javax.swing.JFrame {
             editFlightUI.fromFld.setText(table.getValueAt(table.getSelectedRow(), 2).toString());
             editFlightUI.toFld.setText(table.getValueAt(table.getSelectedRow(), 3).toString());
             
+            // @https://docs.oracle.com/javase/7/docs/api/java/lang/String.html#split(java.lang.String)
             String[] dep = table.getValueAt(table.getSelectedRow(), 4).toString().split(" ");
             editFlightUI.departureDateFld.setText(dep[0]);
             editFlightUI.departureTimeFld.setText(dep[1]);
@@ -292,6 +293,7 @@ public class Admin extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteBtnActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // @https://github.com/zanadaniel/system-time
         Thread Clock = new Thread(){
             @Override
             public void run(){

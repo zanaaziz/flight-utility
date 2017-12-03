@@ -24,11 +24,13 @@ import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author zanadaniel
- This class will be inherited by the Main class, which is instantiated in all the classes.
- Thus, all functions here will be readily available for use throughout the application.
+ This class is inherited by the Main class, which is already instantiated in all classes.
+ Thus, all functions here will be readily available throughout the program.
  *
  */
+
 public class Functions {
+    
     /* add padding to a given textfield */
     public void addPaddingToJTextField(JTextField textfield){
         textfield.setBorder(BorderFactory.createCompoundBorder(
@@ -49,11 +51,16 @@ public class Functions {
         try {
             FileReader fr = new FileReader(file);
             BufferedReader br = new BufferedReader(fr);
-                        
+            
+            // an object to store each line of the data.txt file, we convert it to array so it can be iterated through
             Object[] lines = br.lines().toArray();
             
+            // iterate through each line
             for (Object line : lines) {
+                // split the data using '//' into columns
                 String[] row = line.toString().split("//");
+                
+                // finally, add the row
                 tableModel.addRow(row);
             }
             
@@ -64,6 +71,7 @@ public class Functions {
     
     /* save table data to file */
     public void saveData(String dataFile, JTable table){
+        // file object using the passed in argument as the destination
         File file = new File(dataFile);
         
         try {
@@ -123,12 +131,14 @@ public class Functions {
     
     /* calculates the flight duration in hours between the departure date and arrival date */
     public String calculateFlightDuration(String dep, String arr){
+        // @http://www.java2s.com/Tutorial/Java/0040__Data-Type/SimpleDateFormat.htm
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         
         Date departure;
         Date arrival;
         long duration = 0;
 
+        // @https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html
         try {
             departure = format.parse(dep);
             
@@ -147,6 +157,7 @@ public class Functions {
     }
     
     /* setting the look and feel to Nimbus */
+    // @https://docs.oracle.com/javase/tutorial/uiswing/lookandfeel/nimbus.html
     public void setTheme(){
         try{
             for(UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()){
