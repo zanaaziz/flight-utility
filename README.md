@@ -41,7 +41,7 @@ Just like creating a new flight, you can edit an existing flight record by simpl
 # Deleting a Flight Record
 To delete a flight record, simply select the row and click the 'Delete' option. You will be asked to confirm your decision and if the response is yes, the record will be deleted and the table will update.
 
-<img src="https://github.com/zanadaniel/ryanair-project/blob/master/images/Confirm%20Deletion.png" width="300">
+<img src="https://github.com/zanadaniel/ryanair-project/blob/master/images/Confirm%20Deletion.png" width="400">
 
 ---
 
