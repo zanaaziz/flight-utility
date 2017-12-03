@@ -7,3 +7,14 @@ Upon launch, the app will search for a 'data.txt' file which would contain all t
 Of course, it would also save and write to that file using the same format.
 
 <img src="https://github.com/zanadaniel/ryanair-project/blob/master/images/Data%20File.png" width="600">
+
+---
+
+# Flight ID Search Window
+This is the first window to greet the user. From here, they can search for a flight using their uniquely generated five digit flight ID that starts with the letter 'F'. Upon search, the program will scan through the data file and if a match is found, display all information back to the user. However, if no match is found, it'll notify the user accordingly.
+
+<img src="https://github.com/zanadaniel/ryanair-project/blob/master/images/Home%20Window.png">
+
+<img src="https://github.com/zanadaniel/ryanair-project/blob/master/images/Flight%20ID%20Searching.png">
+
+<img src="https://github.com/zanadaniel/ryanair-project/blob/master/images/Flight%20ID%20Search%20Result.png" width="100">
