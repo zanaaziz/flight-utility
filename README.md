@@ -1,6 +1,8 @@
 # Ryanair Utility Tool Java Project
 The "Ryanair Utility Tool" is a college Java project that is built to somewhat mimick a flight recording system. Using this app, you can add, delete, edit, and filter through a "database" of flight records.
 
+---
+
 # How Does It Work?
 Upon launch, the app will search for a 'data.txt' file which would contain all the flight data for it to read and import. It reads the file by using a format of splitting whenever it reads '//'. This indicates that the following information is to be imported into the next cell in the current row.
 
@@ -27,4 +29,4 @@ The admin panel is where the power of the program really is. Here, you can manip
 # Creating a New Flight Record
 Creating a new flight record is really easy. Click the 'Add' button and a window will appear where you can fill in the new flight record details such as where is the flight from and to where, departure and arrival dates, and the times. Also, the program will then instantly calculate the flight duration using the given dates and times.
 
-<img src="https://github.com/zanadaniel/ryanair-project/blob/master/images/Add%20Flight.png" width="400">
+<img src="https://github.com/zanadaniel/ryanair-project/blob/master/images/Add%20Flight.png" width="300">
