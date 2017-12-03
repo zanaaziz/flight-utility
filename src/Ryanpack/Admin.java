@@ -27,6 +27,15 @@ public class Admin extends javax.swing.JFrame {
         TableRowSorter<TableModel> rowSorter = new TableRowSorter<>(table.getModel());
         table.setRowSorter(rowSorter);
         
+        // disabling table header sorting
+        rowSorter.setSortable(0, false);
+        rowSorter.setSortable(1, false);
+        rowSorter.setSortable(2, false);
+        rowSorter.setSortable(3, false);
+        rowSorter.setSortable(4, false);
+        rowSorter.setSortable(5, false);
+        rowSorter.setSortable(6, false);
+        
         searchFld.getDocument().addDocumentListener(new DocumentListener(){
             @Override
             public void insertUpdate(DocumentEvent e) {
