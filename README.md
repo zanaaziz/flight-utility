@@ -13,10 +13,8 @@ Of course, it would also save and write to that file using the same format.
 # Flight ID Search Window
 This is the first window to greet the user. From here, they can search for a flight using their uniquely generated five digit flight ID that starts with the letter 'F'. Upon search, the program will scan through the data file and if a match is found, display all information back to the user. However, if no match is found, it'll notify the user accordingly.
 
-<p>
 <img align="left" src="https://github.com/zanadaniel/ryanair-project/blob/master/images/Flight%20ID%20Searching.png" width="600">
 <img align="right" src="https://github.com/zanadaniel/ryanair-project/blob/master/images/Flight%20ID%20Search%20Result.png" width="200">
-</p>
 
 ---
 
@@ -25,7 +23,9 @@ The admin panel is where the power of the program really is. Here, you can manip
 
 <img src="https://github.com/zanadaniel/ryanair-project/blob/master/images/Admin%20Panel.png" width="600">
 
-## Creating a New Flight Record
+---
+
+# Creating a New Flight Record
 Creating a new flight record is really easy. Click the 'Add' button and a window will appear where you can fill in the new flight record details such as where is the flight from and to where, departure and arrival dates, and the times. Also, the program will then instantly calculate the flight duration using the given dates and times.
 
 <img src="https://github.com/zanadaniel/ryanair-project/blob/master/images/Add%20Flight.png" width="600">
