@@ -1,4 +1,3 @@
-F32002//P819//Moscow, Russia//Paris, France//27/11/2017 14:45//28/11/2017 12:30//21//
 F24864//P730//South Andros, Bahamas//Baler, Philippines//12/03/2018 22:20//13/03/2018 21:30//23//
 F26794//P820//Berlin, Germany//Philadelphia, USA//05/02/2018 19:45//06/02/2018 07:45//12//
 F55009//P255//Borlange, Sweden//Cairo, Egypt//09/02/2018 17:00//09/02/2018 23:30//6//
@@ -40,7 +39,7 @@ F38196//P727//Tokyo, Japan//Seoul, South Korea//21/01/2018 21:10//21/01/2018 23:
 F21910//P736//Haifa, Israel//Badin, Pakistan//11/01/2018 23:15//12/01/2018 04:40//5//
 F70849//P902//Frankfurt, Germany//Algiers, Algeria//14/04/2018 08:45//14/04/2018 12:15//3//
 F20250//P122//Milan, Italy//London, England//12/02/2018 20:10//12/02/2018 22:30//2//
-F90415//P430//Minneapolis, USA//Richmond, Canada//26/12/2018 12:15//26/12/2018 17:15//5//
+F90415//P430//Minneapolis, USA//Richmond, Canada//26/12/2018 13:15//26/12/2018 20:15//7//
 F76451//P572//Chennai, India//Colombo, Sri Lanka//13/03/2018 21:30//13/03/2018 22:45//1//
 F25899//P372//Karachi, Pakistan//Doha, Qatar//21/02/2018 22:45//22/02/2018 01:45//3//
 F21948//P916//Tiberias, Israel//Singapore, Singapore//26/11/2017 11:00//26/11/2017 18:00//7//
@@ -54,7 +53,6 @@ F45297//P413//Karachi, Pakistan//Manila, Philippines//28/12/2017 08:00//28/12/20
 F56992//P545//Tokyo, Japan//Hong Kong, Hong Kong//29/01/2018 17:00//29/01/2018 23:00//6//
 F80813//P878//Beijing, China//Tokyo, Japan//19/12/2017 12:00//19/12/2017 16:00//4//
 F23425//P429//Barcelona, Spain//Venice, Italy//29/12/2018 06:00//29/12/2018 08:00//2//
-F20984//P961//Krakow, Poland//Tahoua, Niger//04/01/2018 11:30//04/01/2018 18:00//6//
 F97778//P748//Kingston, Jamaica//Braga, Portugal//13/03/2018 23:30//14/03/2018 11:00//11//
 F38504//P153//Southport, Australia//Minsk, Belarus//24/01/2018 07:30//25/01/2018 06:30//23//
 F38725//P833//Miami, USA//Ban Houei, Laos//01/02/2018 11:05//02/02/2018 10:00//22//
@@ -67,10 +65,9 @@ F76919//P307//Kiev, Ukraine//Berlin, Germany//27/11/2017 13:00//27/11/2017 14:20
 F49919//P870//Jakarta, Indonesia//Lagos, Nigeria//28/11/2017 12:00//29/11/2017 02:00//14//
 F43119//P102//Boston, USA//New Hampshire, USA//13/01/2018 07:30//13/01/2018 09:00//1//
 F57742//P710//Dubai, UAE//Singapore, Singapore//02/02/2018 10:00//02/02/2018 17:00//7//
-F36119//P173//Tel Aviv, Israel//Dublin, Ireland//27/01/2018 09:00//27/01/2018 18:00//9//
+F36119//P173//Tel Aviv, Israel//Dublin, Ireland//27/01/2018 12:00//27/01/2018 21:00//9//
 F82819//P297//New Delhi, India//London, England//01/02/2018 12:00//01/02/2018 22:00//10//
 F45297//P713//Karachi, Pakistan//Manila, Philippines//28/12/2017 08:00//28/12/2017 21:00//13//
-F51992//P575//Tokyo, Japan//Hong Kong, Hong Kong//29/01/2018 17:00//29/01/2018 23:00//6//
 F81913//P778//Beijing, China//Tokyo, Japan//19/12/2017 12:00//19/12/2017 16:00//4//
 F23195//P479//Barcelona, Spain//Venice, Italy//29/12/2018 06:00//29/12/2018 08:00//2//
 F19536//P277//New York, USA//Toronto, Canada//02/02/2018 17:00//02/02/2018 18:00//1//
