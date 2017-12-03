@@ -17,4 +17,4 @@ This is the first window to greet the user. From here, they can search for a fli
 
 <img src="https://github.com/zanadaniel/ryanair-project/blob/master/images/Flight%20ID%20Searching.png" width="600">
 
-<img src="https://github.com/zanadaniel/ryanair-project/blob/master/images/Flight%20ID%20Search%20Result.png" width="600">
+<img src="https://github.com/zanadaniel/ryanair-project/blob/master/images/Flight%20ID%20Search%20Result.png" width="300">
