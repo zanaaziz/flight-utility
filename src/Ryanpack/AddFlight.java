@@ -97,6 +97,7 @@ public class AddFlight extends javax.swing.JFrame {
         });
 
         addBtn.setText("Add Flight");
+        addBtn.setFocusable(false);
         addBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addBtnActionPerformed(evt);
@@ -237,8 +238,8 @@ public class AddFlight extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
-        if(fromFld.getText().isEmpty() || toFld.getText().isEmpty() || departureDateFld.getText().isEmpty() || departureTimeFld.getText().isEmpty() || arrivalDateFld.getText().isEmpty() || arrivalTimeFld.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "One or more fields are missing.\nPlease try again.", "Missing Field(s)", JOptionPane.ERROR_MESSAGE);
+        if(fromFld.getText().isEmpty() || toFld.getText().isEmpty() || departureDateFld.getText().isEmpty() || departureTimeFld.getText().isEmpty() || arrivalDateFld.getText().isEmpty() || arrivalTimeFld.getText().isEmpty() || !departureDateFld.getText().contains("/") || !departureTimeFld.getText().contains(":") || !arrivalDateFld.getText().contains("/") || !arrivalTimeFld.getText().contains(":")){
+            JOptionPane.showMessageDialog(null, "It seems that one or more fields are either missing or filled incorrectly.\nPlease try again.", "Missing or Incorrect Field(s)", JOptionPane.ERROR_MESSAGE);
         }else{
             func.AddFlight(admin.filePath, admin.table, fromFld.getText(), toFld.getText(), departureDateFld.getText() + " " + departureTimeFld.getText(), arrivalDateFld.getText() + " " + arrivalTimeFld.getText());
             this.dispose();

@@ -241,6 +241,7 @@
     <Component class="javax.swing.JButton" name="editBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Edit Flight"/>
+        <Property name="focusable" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editBtnActionPerformed"/>
