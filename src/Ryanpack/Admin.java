@@ -18,6 +18,7 @@ public class Admin extends javax.swing.JFrame {
     Main func = new Main();
     String filePath = "data.txt";
 
+    @SuppressWarnings("CallToThreadStartDuringObjectConstruction")
     public Admin() {
         func.setTheme();
         
@@ -70,6 +71,26 @@ public class Admin extends javax.swing.JFrame {
         });
 
         model = (DefaultTableModel)table.getModel();
+        
+        // @https://github.com/zanadaniel/system-time
+        Thread Clock = new Thread(){
+            @Override
+            public void run(){
+                for(;;){
+                    Date date = new Date();
+                    SimpleDateFormat sdm = new SimpleDateFormat ("HH:mm:ss");
+
+                    clock.setText(sdm.format(date));
+                    try {
+                        sleep(1000);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        };
+        
+        Clock.start();
     }
 
     /**
@@ -100,11 +121,6 @@ public class Admin extends javax.swing.JFrame {
                 formWindowGainedFocus(evt);
             }
             public void windowLostFocus(java.awt.event.WindowEvent evt) {
-            }
-        });
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowActivated(java.awt.event.WindowEvent evt) {
-                formWindowActivated(evt);
             }
         });
 
@@ -291,28 +307,6 @@ public class Admin extends javax.swing.JFrame {
             func.DeleteFlight(filePath, model, table, searchFld);
         }
     }//GEN-LAST:event_deleteBtnActionPerformed
-
-    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        // @https://github.com/zanadaniel/system-time
-        Thread Clock = new Thread(){
-            @Override
-            public void run(){
-                for(;;){
-                    Date date = new Date();
-                    SimpleDateFormat sdm = new SimpleDateFormat ("HH:mm:ss");
-
-                    clock.setText(sdm.format(date));
-                    try {
-                        sleep(1000);
-                    } catch (InterruptedException ex) {
-                        Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-            }
-        };
-        
-        Clock.start();
-    }//GEN-LAST:event_formWindowActivated
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Logo;

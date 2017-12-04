@@ -55,7 +55,9 @@ public class Functions {
             // an object to store each line of the data.txt file, we convert it to array so it can be iterated through
             Object[] lines = br.lines().toArray();
             
-            // iterate through each line
+            
+            // iterate through each line using an enhanced for-loop
+            // @https://www.cis.upenn.edu/~matuszek/General/JavaSyntax/enhanced-for-loops.html
             for (Object line : lines) {
                 // split the data using '//' into columns
                 String[] row = line.toString().split("//");
@@ -141,7 +143,6 @@ public class Functions {
         // @https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html
         try {
             departure = format.parse(dep);
-            
             arrival = format.parse(arr);
 
             long difference = arrival.getTime() - departure.getTime();
