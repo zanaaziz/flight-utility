@@ -71,6 +71,11 @@ public class EditFlight extends javax.swing.JFrame {
                 fromFldFocusGained(evt);
             }
         });
+        fromFld.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fromFldActionPerformed(evt);
+            }
+        });
 
         toLbl.setText("To:");
 
@@ -81,6 +86,11 @@ public class EditFlight extends javax.swing.JFrame {
         toFld.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 toFldFocusGained(evt);
+            }
+        });
+        toFld.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                toFldActionPerformed(evt);
             }
         });
 
@@ -95,12 +105,22 @@ public class EditFlight extends javax.swing.JFrame {
                 departureDateFldFocusGained(evt);
             }
         });
+        departureDateFld.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                departureDateFldActionPerformed(evt);
+            }
+        });
 
         arrivalLbl.setText("Arrival Date:");
 
         arrivalDateFld.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 arrivalDateFldFocusGained(evt);
+            }
+        });
+        arrivalDateFld.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                arrivalDateFldActionPerformed(evt);
             }
         });
 
@@ -114,6 +134,11 @@ public class EditFlight extends javax.swing.JFrame {
         departureTimeFld.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 departureTimeFldFocusGained(evt);
+            }
+        });
+        departureTimeFld.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                departureTimeFldActionPerformed(evt);
             }
         });
 
@@ -289,6 +314,26 @@ public class EditFlight extends javax.swing.JFrame {
     private void arrivalTimeFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arrivalTimeFldActionPerformed
         editBtnActionPerformed(evt);
     }//GEN-LAST:event_arrivalTimeFldActionPerformed
+
+    private void fromFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fromFldActionPerformed
+        editBtnActionPerformed(evt);
+    }//GEN-LAST:event_fromFldActionPerformed
+
+    private void toFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toFldActionPerformed
+        editBtnActionPerformed(evt);
+    }//GEN-LAST:event_toFldActionPerformed
+
+    private void departureDateFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_departureDateFldActionPerformed
+        editBtnActionPerformed(evt);
+    }//GEN-LAST:event_departureDateFldActionPerformed
+
+    private void departureTimeFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_departureTimeFldActionPerformed
+        editBtnActionPerformed(evt);
+    }//GEN-LAST:event_departureTimeFldActionPerformed
+
+    private void arrivalDateFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arrivalDateFldActionPerformed
+        editBtnActionPerformed(evt);
+    }//GEN-LAST:event_arrivalDateFldActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JTextField arrivalDateFld;

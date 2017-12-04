@@ -61,7 +61,19 @@ public class AddFlight extends javax.swing.JFrame {
 
         fromLbl.setText("From:");
 
+        fromFld.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fromFldActionPerformed(evt);
+            }
+        });
+
         toLbl.setText("To:");
+
+        toFld.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                toFldActionPerformed(evt);
+            }
+        });
 
         departureLbl.setText("Departure Date:");
 
@@ -70,8 +82,19 @@ public class AddFlight extends javax.swing.JFrame {
                 departureDateFldFocusLost(evt);
             }
         });
+        departureDateFld.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                departureDateFldActionPerformed(evt);
+            }
+        });
 
         arrivalLbl.setText("Arrival Date:");
+
+        arrivalDateFld.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                arrivalDateFldActionPerformed(evt);
+            }
+        });
 
         addBtn.setText("Add Flight");
         addBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -91,6 +114,12 @@ public class AddFlight extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 2, 11)); // NOI18N
         jLabel3.setForeground(java.awt.Color.gray);
         jLabel3.setText("Example: City, Country");
+
+        departureTimeFld.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                departureTimeFldActionPerformed(evt);
+            }
+        });
 
         departureFormatLbl1.setFont(new java.awt.Font("Lucida Grande", 2, 11)); // NOI18N
         departureFormatLbl1.setForeground(java.awt.Color.gray);
@@ -223,6 +252,26 @@ public class AddFlight extends javax.swing.JFrame {
     private void arrivalTimeFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arrivalTimeFldActionPerformed
         addBtnActionPerformed(evt);
     }//GEN-LAST:event_arrivalTimeFldActionPerformed
+
+    private void fromFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fromFldActionPerformed
+        addBtnActionPerformed(evt);
+    }//GEN-LAST:event_fromFldActionPerformed
+
+    private void toFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toFldActionPerformed
+        addBtnActionPerformed(evt);
+    }//GEN-LAST:event_toFldActionPerformed
+
+    private void departureDateFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_departureDateFldActionPerformed
+        addBtnActionPerformed(evt);
+    }//GEN-LAST:event_departureDateFldActionPerformed
+
+    private void departureTimeFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_departureTimeFldActionPerformed
+        addBtnActionPerformed(evt);
+    }//GEN-LAST:event_departureTimeFldActionPerformed
+
+    private void arrivalDateFldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_arrivalDateFldActionPerformed
+        addBtnActionPerformed(evt);
+    }//GEN-LAST:event_arrivalDateFldActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addBtn;
